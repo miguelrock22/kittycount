@@ -24,10 +24,10 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('personas', 'PersonaController');
 
-Route::resource('codeudors', 'CodeudorController');
+Route::resource('codeudores', 'CodeudorController');
 
 Route::resource('referencias', 'ReferenciaController');
 
 Route::resource('prestamos', 'PrestamoController');
 
-Route::resource('historials', 'HistorialController');
+Route::resource('historiales', 'HistorialController');

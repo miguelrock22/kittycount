@@ -1,4 +1,4 @@
-<table class="table table-responsive" id="codeudors-table">
+<table class="table table-responsive" id="codeudores-table">
     <thead>
         <tr>
             <th>Cedula</th>
@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach($codeudors as $codeudor)
+    @foreach($codeudores as $codeudor)
         <tr>
             <td>{!! $codeudor->cedula !!}</td>
             <td>{!! $codeudor->nombres !!}</td>
@@ -24,10 +24,10 @@
             <td>{!! $codeudor->celular !!}</td>
             <td>{!! $codeudor->personas_id !!}</td>
             <td>
-                {!! Form::open(['route' => ['codeudors.destroy', $codeudor->id], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['codeudores.destroy', $codeudor->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('codeudors.show', [$codeudor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('codeudors.edit', [$codeudor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="{!! route('codeudores.show', [$codeudor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('codeudores.edit', [$codeudor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}

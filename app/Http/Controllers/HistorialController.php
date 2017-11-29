@@ -30,10 +30,10 @@ class HistorialController extends AppBaseController
     public function index(Request $request)
     {
         $this->historialRepository->pushCriteria(new RequestCriteria($request));
-        $historials = $this->historialRepository->all();
+        $historiales = $this->historialRepository->all();
 
-        return view('historials.index')
-            ->with('historials', $historials);
+        return view('historiales.index')
+            ->with('historiales', $historiales);
     }
 
     /**
@@ -43,7 +43,7 @@ class HistorialController extends AppBaseController
      */
     public function create()
     {
-        return view('historials.create');
+        return view('historiales.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class HistorialController extends AppBaseController
 
         Flash::success('Historial saved successfully.');
 
-        return redirect(route('historials.index'));
+        return redirect(route('historiales.index'));
     }
 
     /**
@@ -78,10 +78,10 @@ class HistorialController extends AppBaseController
         if (empty($historial)) {
             Flash::error('Historial not found');
 
-            return redirect(route('historials.index'));
+            return redirect(route('historiales.index'));
         }
 
-        return view('historials.show')->with('historial', $historial);
+        return view('historiales.show')->with('historial', $historial);
     }
 
     /**
@@ -98,10 +98,10 @@ class HistorialController extends AppBaseController
         if (empty($historial)) {
             Flash::error('Historial not found');
 
-            return redirect(route('historials.index'));
+            return redirect(route('historiales.index'));
         }
 
-        return view('historials.edit')->with('historial', $historial);
+        return view('historiales.edit')->with('historial', $historial);
     }
 
     /**
@@ -119,14 +119,14 @@ class HistorialController extends AppBaseController
         if (empty($historial)) {
             Flash::error('Historial not found');
 
-            return redirect(route('historials.index'));
+            return redirect(route('historiales.index'));
         }
 
         $historial = $this->historialRepository->update($request->all(), $id);
 
         Flash::success('Historial updated successfully.');
 
-        return redirect(route('historials.index'));
+        return redirect(route('historiales.index'));
     }
 
     /**
@@ -143,13 +143,13 @@ class HistorialController extends AppBaseController
         if (empty($historial)) {
             Flash::error('Historial not found');
 
-            return redirect(route('historials.index'));
+            return redirect(route('historiales.index'));
         }
 
         $this->historialRepository->delete($id);
 
         Flash::success('Historial deleted successfully.');
 
-        return redirect(route('historials.index'));
+        return redirect(route('historiales.index'));
     }
 }

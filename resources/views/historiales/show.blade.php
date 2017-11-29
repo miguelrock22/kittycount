@@ -10,8 +10,8 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
-                    @include('historials.show_fields')
-                    <a href="{!! route('historials.index') !!}" class="btn btn-default">Back</a>
+                    @include('historiales.show_fields')
+                    <a href="{!! route('historiales.index') !!}" class="btn btn-default">Back</a>
                 </div>
             </div>
         </div>

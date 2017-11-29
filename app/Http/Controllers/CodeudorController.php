@@ -30,10 +30,10 @@ class CodeudorController extends AppBaseController
     public function index(Request $request)
     {
         $this->codeudorRepository->pushCriteria(new RequestCriteria($request));
-        $codeudors = $this->codeudorRepository->all();
+        $codeudores = $this->codeudorRepository->all();
 
-        return view('codeudors.index')
-            ->with('codeudors', $codeudors);
+        return view('codeudores.index')
+            ->with('codeudores', $codeudores);
     }
 
     /**
@@ -43,7 +43,7 @@ class CodeudorController extends AppBaseController
      */
     public function create()
     {
-        return view('codeudors.create');
+        return view('codeudores.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class CodeudorController extends AppBaseController
 
         Flash::success('Codeudor saved successfully.');
 
-        return redirect(route('codeudors.index'));
+        return redirect(route('codeudores.index'));
     }
 
     /**
@@ -78,10 +78,10 @@ class CodeudorController extends AppBaseController
         if (empty($codeudor)) {
             Flash::error('Codeudor not found');
 
-            return redirect(route('codeudors.index'));
+            return redirect(route('codeudores.index'));
         }
 
-        return view('codeudors.show')->with('codeudor', $codeudor);
+        return view('codeudores.show')->with('codeudor', $codeudor);
     }
 
     /**
@@ -98,10 +98,10 @@ class CodeudorController extends AppBaseController
         if (empty($codeudor)) {
             Flash::error('Codeudor not found');
 
-            return redirect(route('codeudors.index'));
+            return redirect(route('codeudores.index'));
         }
 
-        return view('codeudors.edit')->with('codeudor', $codeudor);
+        return view('codeudores.edit')->with('codeudor', $codeudor);
     }
 
     /**
@@ -119,14 +119,14 @@ class CodeudorController extends AppBaseController
         if (empty($codeudor)) {
             Flash::error('Codeudor not found');
 
-            return redirect(route('codeudors.index'));
+            return redirect(route('codeudores.index'));
         }
 
         $codeudor = $this->codeudorRepository->update($request->all(), $id);
 
         Flash::success('Codeudor updated successfully.');
 
-        return redirect(route('codeudors.index'));
+        return redirect(route('codeudores.index'));
     }
 
     /**
@@ -143,13 +143,13 @@ class CodeudorController extends AppBaseController
         if (empty($codeudor)) {
             Flash::error('Codeudor not found');
 
-            return redirect(route('codeudors.index'));
+            return redirect(route('codeudores.index'));
         }
 
         $this->codeudorRepository->delete($id);
 
         Flash::success('Codeudor deleted successfully.');
 
-        return redirect(route('codeudors.index'));
+        return redirect(route('codeudores.index'));
     }
 }

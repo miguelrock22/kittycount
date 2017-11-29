@@ -11,9 +11,9 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($codeudor, ['route' => ['codeudors.update', $codeudor->id], 'method' => 'patch']) !!}
+                   {!! Form::model($codeudor, ['route' => ['codeudores.update', $codeudor->id], 'method' => 'patch']) !!}
 
-                        @include('codeudors.fields')
+                        @include('codeudores.fields')
 
                    {!! Form::close() !!}
                </div>

@@ -11,9 +11,9 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($historial, ['route' => ['historials.update', $historial->id], 'method' => 'patch']) !!}
+                   {!! Form::model($historial, ['route' => ['historiales.update', $historial->id], 'method' => 'patch']) !!}
 
-                        @include('historials.fields')
+                        @include('historiales.fields')
 
                    {!! Form::close() !!}
                </div>
