@@ -2,34 +2,39 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>InfyOm Generator</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    
+    <meta name="theme-color" content="#ffffff">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {!!Html::style("plugins/alertifyjs/css/alertify.min.css")!!}
+    {!!Html::style("bootstrap/css/bootstrap.min.css")!!}
+    {!!Html::style("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")!!}
+    {!!Html::style("plugins/select2/select2.min.css")!!}
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-
-    <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/css/skins/_all-skins.min.css">
-
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+    {!!Html::style("https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.3/css/AdminLTE.min.css")!!}
+    {!!Html::style("https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.3/css/skins/_all-skins.min.css")!!}
 
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    {!!Html::style("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")!!}
+
+    {!!Html::style("https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css")!!}
+    {!!Html::style("plugins/datepicker/datepicker3.css")!!}
+    {!!Html::style("plugins/iCheck/skins/all.css")!!}
+    {!!Html::style("plugins/pace/pace.min.css")!!}
+    {!!Html::style("css/default.css")!!}
 
     @yield('css')
 </head>
 
 <body class="skin-blue sidebar-mini">
+    <div class="pace  pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
@@ -37,7 +42,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>InfyOm</b>
+                <b>{{ config('app.name', 'Laravel') }}</b>
             </a>
 
             <!-- Header Navbar -->
@@ -66,18 +71,18 @@
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}
-                                        <small>Member since {!! Auth::user()->created_at->format('M. Y') !!}</small>
+                                        <small>Miembro desde {!! Auth::user()->created_at->format('M. Y') !!}</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Sign out
+                                            Salir
                                         </a>
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
@@ -99,9 +104,9 @@
         </div>
 
         <!-- Main Footer -->
-        <footer class="main-footer" style="max-height: 100px;text-align: center">
+        {{--<footer class="main-footer" style="max-height: 100px;text-align: center">
             <strong>Copyright © 2016 <a href="#">Company</a>.</strong> All rights reserved.
-        </footer>
+        </footer>--}}
 
     </div>
 @else
@@ -133,8 +138,8 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    <li><a href="{!! url('/login') !!}">Login</a></li>
-                    <li><a href="{!! url('/register') !!}">Register</a></li>
+                    <li><a href="{!! url('/login') !!}">Ingreso</a></li>
+                    {{--<li><a href="{!! url('/register') !!}">Register</a></li>--}}
                 </ul>
             </div>
         </div>
@@ -151,15 +156,33 @@
     </div>
     @endif
 
-    <!-- jQuery 3.1.1 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery 2.1.4 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    {!!Html::script("plugins/alertifyjs/alertify.min.js")!!}
+    {!!Html::script("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")!!}
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>-->
 
+    {!!Html::script("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js")!!}
+    {!!Html::script("https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js")!!}
+    {!!Html::script("plugins/slimScroll/jquery.slimscroll.min.js")!!}
+
+    {!!Html::script("https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js")!!}
+    {!!Html::script("https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.js")!!}
+    {!!Html::script("https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/additional-methods.js")!!}
+    {!!Html::script("https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js")!!}
+    {!!Html::script("plugins/typehead/bootstrap-typeahead.min.js")!!}
+    {!!Html::script("plugins/datepicker/bootstrap-datepicker.js")!!}
+    {!!Html::script("plugins/datepicker/locales/bootstrap-datepicker.es.js")!!}
+    {!!Html::script("plugins/pace/pace.min.js")!!}
+    {!!Html::script("js/config.js")!!}
+    <script>
+        AppName = '{{ config('app.name', 'Laravel') }}';
+    </script>
     <!-- AdminLTE App -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/js/adminlte.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    {!!Html::script("js/app.min.js")!!}
 
     @yield('scripts')
 </body>

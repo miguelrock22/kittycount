@@ -1,0 +1,25 @@
+label.error { display: block; float: none; color: red; vertical-align: top; font-size: small; }
+
+.scrollchange{
+	overflow-y: scroll !important;
+	overflow-x: hidden;
+}
+
+.scrollchange::-webkit-scrollbar {
+	width: 0.6em;
+}
+
+.scrollchange::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+.scrollchange::-webkit-scrollbar-thumb {
+	background-color: #00C0EF;
+	outline: 1px solid slategrey;
+}
+
+
+textarea{resize: none;}
+	.box{
+	    background:rgba(248,248,248,0.8);
+	}
