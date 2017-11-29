@@ -1,19 +1,19 @@
 <!-- Cedula Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('cedula', 'Cedula:') !!}
-    {!! Form::text('cedula', null, ['class' => 'form-control']) !!}
+    <sup>*</sup>{!! Form::label('cedula', 'Cedula:') !!}
+    {!! Form::text('cedula', null, ['class' => 'form-control', 'required' => true]) !!}
 </div>
 
 <!-- Nombres Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('nombres', 'Nombres:') !!}
-    {!! Form::text('nombres', null, ['class' => 'form-control']) !!}
+    <sup>*</sup>{!! Form::label('nombres', 'Nombres:') !!}
+    {!! Form::text('nombres', null, ['class' => 'form-control', 'required' => true]) !!}
 </div>
 
 <!-- Direccion Casa Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('direccion_casa', 'Direccion Casa:') !!}
-    {!! Form::text('direccion_casa', null, ['class' => 'form-control']) !!}
+    <sup>*</sup>{!! Form::label('direccion_casa', 'Direccion Casa:') !!}
+    {!! Form::text('direccion_casa', null, ['class' => 'form-control', 'required' => true]) !!}
 </div>
 
 <!-- Direccion Trabajo Field -->
@@ -24,8 +24,8 @@
 
 <!-- Oficio Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('oficio', 'Oficio:') !!}
-    {!! Form::text('oficio', null, ['class' => 'form-control']) !!}
+    <sup>*</sup>{!! Form::label('oficio', 'Oficio:') !!}
+    {!! Form::text('oficio', null, ['class' => 'form-control', 'required' => true]) !!}
 </div>
 
 <!-- Telefono Field -->
@@ -53,10 +53,7 @@
 </div>
 
 <!-- User Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
-</div>
+{!! Form::hidden('user_id', $user, ['class' => 'form-control']) !!}
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePersonaRequest;
 use App\Repositories\PersonaRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -43,7 +44,8 @@ class PersonaController extends AppBaseController
      */
     public function create()
     {
-        return view('personas.create');
+        return view('personas.create')
+            ->with('user', Auth::id());
     }
 
     /**
