@@ -14,3 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('personas', 'PersonaController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::resource('personas', 'PersonaController');
+
+Route::resource('codeudors', 'CodeudorController');
+
+Route::resource('referencias', 'ReferenciaController');
+
+Route::resource('prestamos', 'PrestamoController');
+
+Route::resource('historials', 'HistorialController');
