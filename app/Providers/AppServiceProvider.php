@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,6 +19,17 @@ class AppServiceProvider extends ServiceProvider
             'create' => 'crear',
             'edit' => 'editar',
         ]);
+
+        View::composer(['*.create', '*.edit'], function ($view) {
+            $parentesco = [
+                "Padre/Madre" => "Padre/Madre",
+                "Herman@" => "Herman@" ,
+                "Prim@" => "Prim@",
+                "Abuel@" => "Abuel@",
+                "Ti@" => "Ti@",
+            ];
+            View::share('parentesco', $parentesco);
+        });
     }
 
     /**

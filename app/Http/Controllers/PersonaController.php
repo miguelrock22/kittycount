@@ -34,7 +34,7 @@ class PersonaController extends AppBaseController
     public function index(Request $request)
     {
         $this->personaRepository->pushCriteria(new RequestCriteria($request));
-        $personas = $this->personaRepository->all();
+        $personas = $this->personaRepository->with('user')->get();
 
         return view('personas.index')
             ->with('personas', $personas);
@@ -59,11 +59,23 @@ class PersonaController extends AppBaseController
      */
     public function store(CreatePersonaRequest $request)
     {
+        $validatedData = $request->validate([
+            'cedula' => 'required|unique:personas',
+            'nombres' => 'required',
+            'direccion_casa' => 'required',
+            'direccion_trabajo' => 'required',
+            'oficio' => 'required',
+            'telefono' => 'required',
+            'celular' => 'required',
+            'url_cedula' => 'required',
+            'url_carta_laboral' => 'required',
+        ]);
+
         $input = $request->all();
-        $input['user_id'] = Auth::id();
         $refs = array();
-        $persona = $this->personaRepository->create($input);
-        
+        $data = $this->setPersona($request);
+        $persona = $this->personaRepository->create($data);
+
         if($persona){
             for($i = 1; $i < 3; $i++){
                 $this->referenciaRepository->create(array(
@@ -84,10 +96,7 @@ class PersonaController extends AppBaseController
                 ));
             }
         }
-            
-        //echo "<pre>"; print_r($refs); echo "</pre>";die();
-        Flash::success('Persona saved successfully.');
-
+        Flash::success('Persona registrada correctamente.');
         return redirect(route('personas.index'));
     }
 
@@ -178,5 +187,31 @@ class PersonaController extends AppBaseController
         Flash::success('Persona deleted successfully.');
 
         return redirect(route('personas.index'));
+    }
+
+    private function setPersona($request) {
+
+        $url_cedula = null;
+        if ($request->hasFile('url_cedula')) {
+            $url_cedula = $this->guardarArchivo($request->file('url_cedula'));
+        }
+
+        $url_carta_laboral = null;
+        if ($request->hasFile('url_carta_laboral')) {
+            $url_carta_laboral = $this->guardarArchivo($request->file('url_carta_laboral'));
+        }
+
+        return [
+            'cedula' => $request->cedula,
+            'nombres' => $request->nombres,
+            'direccion_casa' => $request->direccion_casa,
+            'direccion_trabajo' => $request->direccion_trabajo,
+            'oficio' => $request->oficio,
+            'telefono' => $request->telefono,
+            'celular' => $request->celular,
+            'url_cedula' => $url_cedula,
+            'url_carta_laboral' => $url_carta_laboral,
+            'user_id' => Auth::id()
+        ];
     }
 }

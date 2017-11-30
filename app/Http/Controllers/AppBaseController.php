@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Response, Storage, File;
 use InfyOm\Generator\Utils\ResponseUtil;
-use Response;
 
 /**
  * @SWG\Swagger(
@@ -26,5 +26,12 @@ class AppBaseController extends Controller
     public function sendError($error, $code = 404)
     {
         return Response::json(ResponseUtil::makeError($error), $code);
+    }
+
+    public function guardarArchivo($file)
+    {
+        $fileName = time() .  '_' . $file->getClientOriginalName();
+        Storage::disk('public')->put($fileName, File::get($file));
+        return $fileName;
     }
 }
