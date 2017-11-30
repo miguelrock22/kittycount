@@ -194,12 +194,12 @@ class PersonaController extends AppBaseController
 
         $url_cedula = null;
         if ($request->hasFile('url_cedula')) {
-            $url_cedula = $this->guardarArchivo($request->file('url_cedula'));
+            $url_cedula = $request->url_cedula->store('images', 'public');
         }
 
         $url_carta_laboral = null;
         if ($request->hasFile('url_carta_laboral')) {
-            $url_carta_laboral = $this->guardarArchivo($request->file('url_carta_laboral'));
+            $url_carta_laboral = $request->url_carta_laboral->store('images', 'public');
         }
 
         return [

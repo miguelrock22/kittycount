@@ -24,8 +24,8 @@
             <td>{!! $persona->oficio !!}</td>
             <td>{!! $persona->telefono !!}</td>
             <td>{!! $persona->celular !!}</td>
-            <td>{!! $persona->url_cedula !!}</td>
-            <td>{!! $persona->url_carta_laboral !!}</td>
+            <td><img src="{{ asset('img/'.$persona->url_cedula) }}" class="img-circle" alt="User Image" width="60" height="60"></td>
+            <td><img src="{{ asset('img/'.$persona->url_carta_laboral)  }}" class="img-circle" alt="User Image" width="60" height="60"></td>
             <td>{!! $persona->user->name !!}</td>
             <td>
                 {!! Form::open(['route' => ['personas.destroy', $persona->id], 'method' => 'delete']) !!}

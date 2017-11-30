@@ -27,11 +27,4 @@ class AppBaseController extends Controller
     {
         return Response::json(ResponseUtil::makeError($error), $code);
     }
-
-    public function guardarArchivo($file)
-    {
-        $fileName = time() .  '_' . $file->getClientOriginalName();
-        Storage::disk('public')->put($fileName, File::get($file));
-        return $fileName;
-    }
 }

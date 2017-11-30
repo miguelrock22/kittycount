@@ -15,19 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::resource('personas', 'PersonaController');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::middleware(['auth'])->group(function() {
 
-Route::resource('personas', 'PersonaController');
+	Route::get('/home', 'HomeController@index');
 
-Route::resource('codeudores', 'CodeudorController');
+	Route::resource('personas', 'PersonaController');
 
-Route::resource('referencias', 'ReferenciaController');
+	Route::resource('personas', 'PersonaController');
 
-Route::resource('prestamos', 'PrestamoController');
+	Route::resource('codeudores', 'CodeudorController');
 
-Route::resource('historiales', 'HistorialController');
+	Route::resource('referencias', 'ReferenciaController');
+
+	Route::resource('prestamos', 'PrestamoController');
+
+	Route::resource('historiales', 'HistorialController');
+});
