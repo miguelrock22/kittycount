@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePersonaRequest;
 use App\Http\Requests\UpdatePersonaRequest;
 use App\Repositories\PersonaRepository;
+use App\Repositories\ReferenciaRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,12 @@ class PersonaController extends AppBaseController
 {
     /** @var  PersonaRepository */
     private $personaRepository;
+    private $referenciaRepository;
 
-    public function __construct(PersonaRepository $personaRepo)
+    public function __construct(PersonaRepository $personaRepo,ReferenciaRepository $refRepo)
     {
         $this->personaRepository = $personaRepo;
+        $this->referenciaRepository = $refRepo;
     }
 
     /**
@@ -44,8 +47,7 @@ class PersonaController extends AppBaseController
      */
     public function create()
     {
-        return view('personas.create')
-            ->with('user', Auth::id());
+        return view('personas.create');
     }
 
     /**
@@ -58,9 +60,32 @@ class PersonaController extends AppBaseController
     public function store(CreatePersonaRequest $request)
     {
         $input = $request->all();
-
+        $input['user_id'] = Auth::id();
+        $refs = array();
         $persona = $this->personaRepository->create($input);
-
+        
+        if($persona){
+            for($i = 1; $i < 3; $i++){
+                $this->referenciaRepository->create(array(
+                    'nombres' => $input['nombres_pers_'.$i],
+                    'telefonos' => $input['telefonos_pers_'.$i],
+                    'parentesco' => $input['parentesco_pers_'.$i],
+                    'persona_id' => $persona->id,
+                    'codeudores_id' => null
+                ));
+            }
+            for($i = 1; $i < 3; $i++){
+                $this->referenciaRepository->create(array(
+                    'nombres' => $input['nombres_fam_'.$i],
+                    'telefonos' => $input['telefonos_fam_'.$i],
+                    'parentesco' => $input['parentesco_fam_'.$i],
+                    'persona_id' => $persona->id,
+                    'codeudores_id' => null
+                ));
+            }
+        }
+            
+        //echo "<pre>"; print_r($refs); echo "</pre>";die();
         Flash::success('Persona saved successfully.');
 
         return redirect(route('personas.index'));
