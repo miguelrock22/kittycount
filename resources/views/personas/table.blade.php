@@ -8,9 +8,6 @@
         <th>Oficio</th>
         <th>Telefono</th>
         <th>Celular</th>
-        <th>Url Cedula</th>
-        <th>Url Carta Laboral</th>
-        <th>User Id</th>
             <th colspan="3">Action</th>
         </tr>
     </thead>
@@ -24,9 +21,6 @@
             <td>{!! $persona->oficio !!}</td>
             <td>{!! $persona->telefono !!}</td>
             <td>{!! $persona->celular !!}</td>
-            <td>{!! $persona->url_cedula !!}</td>
-            <td>{!! $persona->url_carta_laboral !!}</td>
-            <td>{!! $persona->user_id !!}</td>
             <td>
                 {!! Form::open(['route' => ['personas.destroy', $persona->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

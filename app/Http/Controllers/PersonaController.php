@@ -70,7 +70,7 @@ class PersonaController extends AppBaseController
                     'nombres' => $input['nombres_pers_'.$i],
                     'telefonos' => $input['telefonos_pers_'.$i],
                     'parentesco' => $input['parentesco_pers_'.$i],
-                    'persona_id' => $persona->id,
+                    'personas_id' => $persona->id,
                     'codeudores_id' => null
                 ));
             }
@@ -79,13 +79,12 @@ class PersonaController extends AppBaseController
                     'nombres' => $input['nombres_fam_'.$i],
                     'telefonos' => $input['telefonos_fam_'.$i],
                     'parentesco' => $input['parentesco_fam_'.$i],
-                    'persona_id' => $persona->id,
+                    'personas_id' => $persona->id,
                     'codeudores_id' => null
                 ));
             }
         }
             
-        //echo "<pre>"; print_r($refs); echo "</pre>";die();
         Flash::success('Persona saved successfully.');
 
         return redirect(route('personas.index'));
