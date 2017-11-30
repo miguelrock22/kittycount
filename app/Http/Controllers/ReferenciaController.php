@@ -30,7 +30,7 @@ class ReferenciaController extends AppBaseController
     public function index(Request $request)
     {
         $this->referenciaRepository->pushCriteria(new RequestCriteria($request));
-        $referencias = $this->referenciaRepository->all();
+        $referencias = $this->referenciaRepository->with(['persona'])->get();
 
         return view('referencias.index')
             ->with('referencias', $referencias);

@@ -33,7 +33,7 @@
     {!! Form::label('estado', 'Estado:') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('estado', false) !!}
-        {!! Form::checkbox('estado', '1', null) !!} 1
+        {!! Form::checkbox('estado', '1', null) !!}
     </label>
 </div>
 
@@ -69,6 +69,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('prestamos.index') !!}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+    <a href="{!! route('prestamos.index') !!}" class="btn btn-default">Cancelar</a>
 </div>

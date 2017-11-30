@@ -2,12 +2,12 @@
     <thead>
         <tr>
             <th>Total Cobrado</th>
-        <th>Cuotas</th>
-        <th>Observacion</th>
-        <th>Personas Id</th>
-        <th>Users Id</th>
-        <th>Prestamos Id</th>
-            <th colspan="3">Action</th>
+            <th>Cuotas</th>
+            <th>Observación</th>
+            <th>Persona</th>
+            <th>Usuario</th>
+            <th>Prestamos</th>
+            <th colspan="3">Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -16,8 +16,8 @@
             <td>{!! $historial->total_cobrado !!}</td>
             <td>{!! $historial->cuotas !!}</td>
             <td>{!! $historial->observacion !!}</td>
-            <td>{!! $historial->personas_id !!}</td>
-            <td>{!! $historial->users_id !!}</td>
+            <td>{!! $historial->persona->nombres !!}</td>
+            <td>{!! $historial->user->name !!}</td>
             <td>{!! $historial->prestamos_id !!}</td>
             <td>
                 {!! Form::open(['route' => ['historiales.destroy', $historial->id], 'method' => 'delete']) !!}

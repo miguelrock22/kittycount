@@ -4,9 +4,9 @@
             <th>Nombres</th>
         <th>Telefonos</th>
         <th>Parentesco</th>
-        <th>Personas Id</th>
-        <th>Codeudores Id</th>
-            <th colspan="3">Action</th>
+        <th>Persona</th>
+        <th>Codeudor</th>
+            <th colspan="3">Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -15,7 +15,7 @@
             <td>{!! $referencia->nombres !!}</td>
             <td>{!! $referencia->telefonos !!}</td>
             <td>{!! $referencia->parentesco !!}</td>
-            <td>{!! $referencia->personas_id !!}</td>
+            <td>{!! $referencia->persona->nombres !!}</td>
             <td>{!! $referencia->codeudores_id !!}</td>
             <td>
                 {!! Form::open(['route' => ['referencias.destroy', $referencia->id], 'method' => 'delete']) !!}

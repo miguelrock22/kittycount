@@ -3,15 +3,15 @@
         <tr>
             <th>Cedula</th>
             <th>Nombres</th>
-            <th>Direccion Casa</th>
-            <th>Direccion Trabajo</th>
+            <th>Dirección Casa</th>
+            <th>Dirección Trabajo</th>
             <th>Oficio</th>
             <th>Telefono</th>
             <th>Celular</th>
-            <th>Url Cedula</th>
-            <th>Url Carta Laboral</th>
+            <th>Cédula</th>
+            <th>Carta Laboral</th>
             <th>Usuario</th>
-            <th colspan="3">Action</th>
+            <th colspan="3">Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +30,7 @@
             <td>
                 {!! Form::open(['route' => ['personas.destroy', $persona->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('personas.show', [$persona->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    {{--<a href="{!! route('personas.show', [$persona->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>--}}
                     <a href="{!! route('personas.edit', [$persona->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>

@@ -12,7 +12,7 @@
         <th>Observacion</th>
         <th>Personas Id</th>
         <th>Users Id</th>
-            <th colspan="3">Action</th>
+            <th colspan="3">Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -27,12 +27,12 @@
             <td>{!! $prestamo->cuotas !!}</td>
             <td>{!! $prestamo->valor_cuota !!}</td>
             <td>{!! $prestamo->observacion !!}</td>
-            <td>{!! $prestamo->personas_id !!}</td>
-            <td>{!! $prestamo->users_id !!}</td>
+            <td>{!! $prestamo->persona->nombres !!}</td>
+            <td>{!! $prestamo->user->name !!}</td>
             <td>
                 {!! Form::open(['route' => ['prestamos.destroy', $prestamo->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('prestamos.show', [$prestamo->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    {{--<a href="{!! route('prestamos.show', [$prestamo->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>--}}
                     <a href="{!! route('prestamos.edit', [$prestamo->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>

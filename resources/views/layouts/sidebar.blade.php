@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <!-- search form (Optional) -->
+        {{--
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search..."/>
@@ -30,7 +30,7 @@
           </span>
             </div>
         </form>
-        <!-- Sidebar Menu -->
+        --}}
 
         <ul class="sidebar-menu">
             @include('layouts.menu')
