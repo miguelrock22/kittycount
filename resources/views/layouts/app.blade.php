@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    
+
     <meta name="theme-color" content="#ffffff">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -41,8 +41,9 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="#" class="logo">
-                <b>{{ config('app.name', 'Laravel') }}</b>
+            <a href="{{ url('/') }}" class="logo">
+                <span class="logo-mini">KITY</span>
+                <span class="logo-lg">KITTY-COUNT</b></span>
             </a>
 
             <!-- Header Navbar -->
