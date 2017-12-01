@@ -1,3 +1,10 @@
+
+<!-- Personas Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('personas_id', 'Cedula Cliente:') !!}
+    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2']) !!}
+</div>
+
 <!-- Prestamo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('prestamo', 'Prestamo:') !!}
@@ -55,17 +62,11 @@
     {!! Form::textarea('observacion', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Personas Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('personas_id', 'Personas Id:') !!}
-    {!! Form::number('personas_id', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Users Id Field -->
+<!-- Users Id Field
 <div class="form-group col-sm-6">
     {!! Form::label('users_id', 'Users Id:') !!}
     {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
-</div>
+</div> -->
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

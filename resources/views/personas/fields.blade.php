@@ -126,7 +126,7 @@
 
         <!-- Parentesco Field -->
         <div class="form-group col-sm-4">
-            <{!! Form::label('parentesco', '2. Parentesco:') !!}
+            {!! Form::label('parentesco', '2. Parentesco:') !!}
             {!! Form::select('parentesco_fam_2',$parentesco, null, ['class' => 'form-control']) !!}
         </div>
     </div>

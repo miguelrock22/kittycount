@@ -1,7 +1,7 @@
 <table class="table table-responsive" id="codeudores-table">
     <thead>
         <tr>
-            <th>Cedula</th>
+        <th>Cedula</th>
         <th>Nombres</th>
         <th>Dirección Casa</th>
         <th>Dirección Trabajo</th>
@@ -22,7 +22,7 @@
             <td>{!! $codeudor->oficio !!}</td>
             <td>{!! $codeudor->telefono !!}</td>
             <td>{!! $codeudor->celular !!}</td>
-            <td>{!! $codeudor->personas_id !!}</td>
+            <td>{!! !isset($codeudor->persona->nombres) ? "jaja" : "jeje" !!}</td>
             <td>
                 {!! Form::open(['route' => ['codeudores.destroy', $codeudor->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
