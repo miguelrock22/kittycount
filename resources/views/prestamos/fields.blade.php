@@ -14,7 +14,7 @@
 <!-- Porcentage Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('porcentage', 'Porcentage:') !!}
-    {!! Form::text('porcentage', null, ['class' => 'form-control']) !!}
+    {!! Form::text('porcentage', 10, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Total Cobrar Field -->
@@ -32,7 +32,7 @@
 <!-- Dia Solicitud Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dia_solicitud', 'Dia Solicitud:') !!}
-    {!! Form::date('dia_solicitud', null, ['class' => 'form-control']) !!}
+    {!! Form::date('dia_solicitud',date('Y-m-d'), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Estado Field -->
