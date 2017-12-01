@@ -2,7 +2,7 @@
 <!-- Personas Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('personas_id', 'Cedula Cliente:') !!}
-    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2']) !!}
+    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2', 'placeholder'=>'Seleccione']) !!}
 </div>
 
 <!-- Cedula Field -->

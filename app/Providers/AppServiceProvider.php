@@ -22,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         View::composer(['*.create', '*.edit'], function ($view) {
-            $personas = array();
             $parentesco = [
                 "Padre/Madre" => "Padre/Madre",
                 "Herman@" => "Herman@" ,
@@ -31,15 +30,11 @@ class AppServiceProvider extends ServiceProvider
                 "Ti@" => "Ti@",
             ];
 
-            $result = Persona::all(['id','cedula'])->toArray();
-            foreach($result as $p){
-                $personas[$p['id']]=$p['cedula']; 
-            }
-            //dd($personas);
+            $personas = Persona::pluck('cedula', 'id');
             View::share('parentesco', $parentesco);
             View::share('personas', $personas);
         });
-        
+
     }
 
     /**

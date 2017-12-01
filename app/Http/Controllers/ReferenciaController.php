@@ -31,7 +31,6 @@ class ReferenciaController extends AppBaseController
     {
         $this->referenciaRepository->pushCriteria(new RequestCriteria($request));
         $referencias = $this->referenciaRepository->with(['persona','codeudor'])->get();
-        
         return view('referencias.index')
             ->with('referencias', $referencias);
     }
