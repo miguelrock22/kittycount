@@ -22,7 +22,7 @@
             <td>{!! $codeudor->oficio !!}</td>
             <td>{!! $codeudor->telefono !!}</td>
             <td>{!! $codeudor->celular !!}</td>
-            <td>{!! !isset($codeudor->persona->nombres) ? "jaja" : "jeje" !!}</td>
+            <td>{!! !isset($codeudor->persona->nombres) ? "-" : $codeudor->persona->nombres !!}</td>
             <td>
                 {!! Form::open(['route' => ['codeudores.destroy', $codeudor->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

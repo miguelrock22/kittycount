@@ -57,6 +57,9 @@ class PrestamoController extends AppBaseController
     {
         $input = $request->all();
 
+        $input['total_cobrar'] = $input['prestamo'] + ($input['prestamo'] * ($input['porcentage'] / 100 )); 
+        $input['users_id'] = Auth::id();
+
         $prestamo = $this->prestamoRepository->create($input);
 
         Flash::success('Prestamo saved successfully.');
