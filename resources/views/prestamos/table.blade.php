@@ -7,7 +7,7 @@
         <th>Dia Solicitud</th>
         <th>Cuotas</th>
         <th>Valor Cuota</th>
-        <th>Observacion</th>
+        <th>Cobrador</th>
         <th>Personas Id</th>
             <th colspan="3">Acción</th>
         </tr>
@@ -21,7 +21,7 @@
             <td>{!! $prestamo->dia_solicitud !!}</td>
             <td>{!! $prestamo->cuotas !!}</td>
             <td>{!! $prestamo->valor_cuota !!}</td>
-            <td>{!! $prestamo->observacion !!}</td>
+            <td>{!! $prestamo->user->name !!}</td>
             <td>{!! $prestamo->persona->nombres !!}</td>
             <td>
                 {!! Form::open(['route' => ['prestamos.destroy', $prestamo->id], 'method' => 'delete']) !!}

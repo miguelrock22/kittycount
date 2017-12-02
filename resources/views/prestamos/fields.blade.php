@@ -5,6 +5,12 @@
     {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2']) !!}
 </div>
 
+<!-- Users Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('users_id', 'Cobrador:') !!}
+    {!! Form::select('users_id', $movil, null, ['class' => 'form-control select2']) !!}
+</div>
+
 <!-- Prestamo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('prestamo', 'Valor a prestar:') !!}
