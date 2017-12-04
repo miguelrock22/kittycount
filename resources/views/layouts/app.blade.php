@@ -42,8 +42,8 @@
 
             <!-- Logo -->
             <a href="{{ url('/') }}" class="logo">
-                <span class="logo-mini">KITY</span>
-                <span class="logo-lg">KITTY-COUNT</b></span>
+                <span class="logo-mini">Gt - turbo</span>
+                <span class="logo-lg">Gt-TURBO</b></span>
             </a>
 
             <!-- Header Navbar -->

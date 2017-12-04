@@ -15,7 +15,9 @@ class CreatePrestamosTable extends Migration
     {
         Schema::create('prestamos', function (Blueprint $table) {
             $table->increments('id');
+            $table->double('prestamo', 11, 2);
             $table->string('porcentage', 20);
+            $table->double('total_cobrar', 11, 2);
             $table->string('dia_cobro', 20);
             $table->date('dia_solicitud');
             $table->boolean('estado');
