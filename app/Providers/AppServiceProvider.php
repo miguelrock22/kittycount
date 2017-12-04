@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //compatibility with MySQL 5.5
         Schema::defaultStringLength(191);
         Route::resourceVerbs([
             'create' => 'crear',
