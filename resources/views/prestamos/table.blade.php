@@ -8,7 +8,7 @@
         <th>Cuotas</th>
         <th>Valor Cuota</th>
         <th>Cobrador</th>
-        <th>Personas Id</th>
+        <th>Cliente</th>
             <th colspan="3">Acción</th>
         </tr>
     </thead>

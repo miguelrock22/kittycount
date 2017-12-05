@@ -2,7 +2,7 @@
 <!-- Personas Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('personas_id', 'Cedula Cliente:') !!}
-    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2']) !!}
+    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2','placeholder'=>'Seleccione']) !!}
 </div>
 
 <!-- Users Id Field -->
@@ -15,12 +15,6 @@
 <div class="form-group col-sm-6">
     {!! Form::label('prestamo', 'Valor a prestar:') !!}
     {!! Form::number('prestamo', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Porcentage Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('porcentage', 'Porcentage:') !!}
-    {!! Form::number('porcentage', 10, ['class' => 'form-control', 'max' => 100, 'min' => 0]) !!}
 </div>
 
 <!-- Dia Cobro Field -->
@@ -53,7 +47,7 @@
 <!-- Valor Cuota Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('valor_cuota', 'Valor Cuota:') !!}
-    {!! Form::number('valor_cuota', null, ['class' => 'form-control', 'step' => 20000]) !!}
+    {!! Form::select('valor_cuota',[1 => 1,2=>2],null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Observacion Field -->

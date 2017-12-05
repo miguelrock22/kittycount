@@ -22,12 +22,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Adminsis',
             'email' => 'adminsis1@test.com',
             'rol_id' => 1,
+            //'created_at' => date('Y-m-d'),
             'password' => bcrypt('123456a'),
         ]);
         DB::table('users')->insert([
             'name' => 'Negro',
             'email' => 'movil1@test.com',
             'rol_id' => 2,
+            //'created_at' => date('Y-m-d'),
             'password' => bcrypt('123456a'),
         ]);
     }
