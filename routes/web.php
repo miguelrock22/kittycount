@@ -17,11 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::prefix('admin')->middleware(['auth'])->group(function() {
+Route::prefix('admin')->middleware(['auth', 'role:Administrador'])->group(function() {
 
-	Route::get('/home', 'HomeController@index');
-
-	Route::resource('personas', 'PersonaController');
+	Route::get('/home', 'HomeController@index')->name('inicio');
 
 	Route::resource('personas', 'PersonaController');
 
