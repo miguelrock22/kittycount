@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateCodeudorRequest;
 use App\Http\Requests\UpdateCodeudorRequest;
 use App\Repositories\CodeudorRepository;
+use App\Repositories\ReferenciaRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -15,10 +16,12 @@ class CodeudorController extends AppBaseController
 {
     /** @var  CodeudorRepository */
     private $codeudorRepository;
+    private $referenciaRepository;
 
-    public function __construct(CodeudorRepository $codeudorRepo)
+    public function __construct(CodeudorRepository $codeudorRepo,ReferenciaRepository $refRepo)
     {
         $this->codeudorRepository = $codeudorRepo;
+        $this->referenciaRepository = $refRepo;
     }
 
     /**
@@ -30,7 +33,7 @@ class CodeudorController extends AppBaseController
     public function index(Request $request)
     {
         $this->codeudorRepository->pushCriteria(new RequestCriteria($request));
-        $codeudores = $this->codeudorRepository->all();
+        $codeudores = $this->codeudorRepository->with(['persona'])->get();
 
         return view('codeudores.index')
             ->with('codeudores', $codeudores);
@@ -58,6 +61,27 @@ class CodeudorController extends AppBaseController
         $input = $request->all();
 
         $codeudor = $this->codeudorRepository->create($input);
+
+        if($codeudor){
+            for($i = 1; $i < 3; $i++){
+                $this->referenciaRepository->create(array(
+                    'nombres' => $input['nombres_pers_'.$i],
+                    'telefonos' => $input['telefonos_pers_'.$i],
+                    'parentesco' => $input['parentesco_pers_'.$i],
+                    'codeudores_id' => $codeudor->id,
+                    'personas_id' => null
+                ));
+            }
+            for($i = 1; $i < 3; $i++){
+                $this->referenciaRepository->create(array(
+                    'nombres' => $input['nombres_fam_'.$i],
+                    'telefonos' => $input['telefonos_fam_'.$i],
+                    'parentesco' => $input['parentesco_fam_'.$i],
+                    'codeudores_id' => $codeudor->id,
+                    'personas_id' => null
+                ));
+            }
+        }
 
         Flash::success('Codeudor saved successfully.');
 

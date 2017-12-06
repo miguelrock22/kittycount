@@ -30,8 +30,7 @@ class PrestamoController extends AppBaseController
     public function index(Request $request)
     {
         $this->prestamoRepository->pushCriteria(new RequestCriteria($request));
-        $prestamos = $this->prestamoRepository->all();
-
+        $prestamos = $this->prestamoRepository->with('user')->get();
         return view('prestamos.index')
             ->with('prestamos', $prestamos);
     }
@@ -56,6 +55,9 @@ class PrestamoController extends AppBaseController
     public function store(CreatePrestamoRequest $request)
     {
         $input = $request->all();
+        $input['porcentage'] = 10;
+        $input['total_cobrar'] = $input['prestamo'] + ($input['prestamo'] * ($input['porcentage'] / 100 ));
+        $input['valor_cuota'] = ($input['prestamo'] * ($input['porcentage'] / 100 ));
 
         $prestamo = $this->prestamoRepository->create($input);
 

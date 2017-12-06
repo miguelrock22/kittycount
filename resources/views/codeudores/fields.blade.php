@@ -1,3 +1,10 @@
+
+<!-- Personas Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('personas_id', 'Cedula Cliente:') !!}
+    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2', 'placeholder'=>'Seleccione']) !!}
+</div>
+
 <!-- Cedula Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('cedula', 'Cedula:') !!}
@@ -40,10 +47,84 @@
     {!! Form::text('celular', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Personas Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('personas_id', 'Personas Id:') !!}
-    {!! Form::number('personas_id', null, ['class' => 'form-control']) !!}
+<!-- Referencias Section -->
+<div class="col-md-12">
+    <h3>Referencias personales</h3>
+</div>
+
+<div class="form-group col-sm-12">
+    <!-- Nombres Field -->
+    <div class="form-group col-sm-5">
+       <sup>*</sup> {!! Form::label('nombres', '1. Nombres:') !!}
+        {!! Form::text('nombres_pers_1', null, ['class' => 'form-control', 'required' => true]) !!}
+    </div>
+
+    <!-- Telefonos Field -->
+    <div class="form-group col-sm-5">
+        <sup>*</sup>{!! Form::label('telefonos', '1. Teléfono Casa, Trabajo o celular:') !!}
+        {!! Form::text('telefonos_pers_1', null, ['class' => 'form-control', 'required' => true]) !!}
+    </div>
+
+    <!-- Parentesco Field -->
+    {!! Form::hidden('parentesco_pers_1', "Amig@", ['class' => 'form-control']) !!}
+
+    <!-- Nombres Field -->
+    <div class="form-group col-sm-5">
+        <sup>*</sup>{!! Form::label('nombres', '2. Nombres:') !!}
+        {!! Form::text('nombres_pers_2', null, ['class' => 'form-control', 'required' => true]) !!}
+    </div>
+
+    <!-- Telefonos Field -->
+    <div class="form-group col-sm-5">
+        <sup>*</sup>{!! Form::label('telefonos', '2. Teléfono Casa, Trabajo o celular:') !!}
+        {!! Form::text('telefonos_pers_2', null, ['class' => 'form-control', 'required' => true]) !!}
+    </div>
+
+    <!-- Parentesco Field -->
+    {!! Form::hidden('parentesco_pers_2', "Amig@", ['class' => 'form-control', 'required' => true]) !!}
+</div>
+<div class="col-md-12">
+    <h3>Referencias familiares</h3>
+</div>
+<div class="form-group col-sm-12">
+    <!-- Nombres Field -->
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <sup>*</sup>{!! Form::label('nombres', '1. Nombres:') !!}
+            {!! Form::text('nombres_fam_1', null, ['class' => 'form-control', 'required' => true]) !!}
+        </div>
+
+        <!-- Telefonos Field -->
+        <div class="form-group col-sm-4">
+            <sup>*</sup>{!! Form::label('telefonos', '1. Teléfono Casa, Trabajo o celular:') !!}
+            {!! Form::text('telefonos_fam_1', null, ['class' => 'form-control', 'required' => true]) !!}
+        </div>
+
+        <!-- Parentesco Field -->
+        <div class="form-group col-sm-4">
+            {!! Form::label('parentesco', '1. Parentesco:') !!}
+            {!! Form::select('parentesco_fam_1', $parentesco, null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+    <div class="row">
+        <!-- Nombres Field -->
+        <div class="form-group col-sm-4">
+            <sup>*</sup>{!! Form::label('nombres', '2. Nombres:') !!}
+            {!! Form::text('nombres_fam_2', null, ['class' => 'form-control', 'required' => true]) !!}
+        </div>
+
+        <!-- Telefonos Field -->
+        <div class="form-group col-sm-4">
+            <sup>*</sup>{!! Form::label('telefonos', '2. Teléfono Casa, Trabajo o celular:') !!}
+            {!! Form::text('telefonos_fam_2', null, ['class' => 'form-control', 'required' => true]) !!}
+        </div>
+
+        <!-- Parentesco Field -->
+        <div class="form-group col-sm-4">
+            {!! Form::label('parentesco', '2. Parentesco:') !!}
+            {!! Form::select('parentesco_fam_2',$parentesco, null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
 </div>
 
 <!-- Submit Field -->

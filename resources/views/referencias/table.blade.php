@@ -15,8 +15,8 @@
             <td>{!! $referencia->nombres !!}</td>
             <td>{!! $referencia->telefonos !!}</td>
             <td>{!! $referencia->parentesco !!}</td>
-            <td>{!! $referencia->persona->nombres !!}</td>
-            <td>{!! $referencia->codeudores_id !!}</td>
+            <td>{!! !isset($referencia->persona->nombres) ? "-": $referencia->persona->nombres !!}</td>
+            <td>{!! !isset($referencia->codeudor->nombres) ? "-": $referencia->codeudor->nombres !!}</td>
             <td>
                 {!! Form::open(['route' => ['referencias.destroy', $referencia->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

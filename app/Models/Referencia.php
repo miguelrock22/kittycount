@@ -69,7 +69,7 @@ class Referencia extends Model
      **/
     public function codeudor()
     {
-        return $this->belongsTo(\App\Models\Codeudor::class);
+        return $this->belongsTo(\App\Models\Codeudor::class, 'codeudores_id');
     }
 
     /**

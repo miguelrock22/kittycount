@@ -88,7 +88,7 @@ class Prestamo extends Model
      **/
     public function persona()
     {
-        return $this->belongsTo(\App\Models\Persona::class);
+        return $this->belongsTo(\App\Models\Persona::class, 'personas_id');
     }
 
     /**
@@ -96,7 +96,7 @@ class Prestamo extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(\App\User::class, 'users_id' );
     }
 
     /**
