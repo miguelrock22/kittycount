@@ -41,13 +41,7 @@
 <!-- Cuotas Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('cuotas', 'Número de cuotas:') !!}
-    {!! Form::number('cuotas', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Valor Cuota Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('valor_cuota', 'Valor Cuota:') !!}
-    {!! Form::select('valor_cuota',[1 => 1,2=>2],null, ['class' => 'form-control']) !!}
+    {!!  Form::select('cuotas',[1 => 1,2=>2],null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Observacion Field -->
