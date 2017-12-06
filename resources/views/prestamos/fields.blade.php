@@ -2,36 +2,30 @@
 <!-- Personas Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('personas_id', 'Cedula Cliente:') !!}
-    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2']) !!}
+    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2','placeholder'=>'Seleccione']) !!}
+</div>
+
+<!-- Users Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('users_id', 'Cobrador:') !!}
+    {!! Form::select('users_id', $movil, null, ['class' => 'form-control select2']) !!}
 </div>
 
 <!-- Prestamo Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('prestamo', 'Prestamo:') !!}
+    {!! Form::label('prestamo', 'Valor a prestar:') !!}
     {!! Form::number('prestamo', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Porcentage Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('porcentage', 'Porcentage:') !!}
-    {!! Form::text('porcentage', 10, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Total Cobrar Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('total_cobrar', 'Total Cobrar:') !!}
-    {!! Form::number('total_cobrar', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Dia Cobro Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('dia_cobro', 'Dia Cobro:') !!}
-    {!! Form::text('dia_cobro', null, ['class' => 'form-control']) !!}
+    {!! Form::label('dia_cobro', 'Día Cobro:') !!}
+    {!! Form::date('dia_cobro', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Dia Solicitud Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('dia_solicitud', 'Dia Solicitud:') !!}
+    {!! Form::label('dia_solicitud', 'Día Solicitud:') !!}
     {!! Form::date('dia_solicitud',date('Y-m-d'), ['class' => 'form-control']) !!}
 </div>
 
@@ -46,14 +40,8 @@
 
 <!-- Cuotas Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('cuotas', 'Cuotas:') !!}
-    {!! Form::text('cuotas', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Valor Cuota Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('valor_cuota', 'Valor Cuota:') !!}
-    {!! Form::number('valor_cuota', null, ['class' => 'form-control']) !!}
+    {!! Form::label('cuotas', 'Número de cuotas:') !!}
+    {!!  Form::select('cuotas',[1 => 1,2=>2],null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Observacion Field -->
@@ -61,12 +49,6 @@
     {!! Form::label('observacion', 'Observacion:') !!}
     {!! Form::textarea('observacion', null, ['class' => 'form-control']) !!}
 </div>
-
-<!-- Users Id Field
-<div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Users Id:') !!}
-    {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
-</div> -->
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

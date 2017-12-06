@@ -1,10 +1,8 @@
 <table class="table table-responsive" id="codeudores-table">
     <thead>
         <tr>
-        <th>Cedula</th>
         <th>Nombres</th>
         <th>Dirección Casa</th>
-        <th>Dirección Trabajo</th>
         <th>Oficio</th>
         <th>Telefono</th>
         <th>Celular</th>
@@ -15,14 +13,12 @@
     <tbody>
     @foreach($codeudores as $codeudor)
         <tr>
-            <td>{!! $codeudor->cedula !!}</td>
             <td>{!! $codeudor->nombres !!}</td>
             <td>{!! $codeudor->direccion_casa !!}</td>
-            <td>{!! $codeudor->direccion_trabajo !!}</td>
             <td>{!! $codeudor->oficio !!}</td>
             <td>{!! $codeudor->telefono !!}</td>
             <td>{!! $codeudor->celular !!}</td>
-            <td>{!! !isset($codeudor->persona->nombres) ? "jaja" : "jeje" !!}</td>
+            <td>{!! !isset($codeudor->persona->nombres) ? "-" : $codeudor->persona->nombres !!}</td>
             <td>
                 {!! Form::open(['route' => ['codeudores.destroy', $codeudor->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
