@@ -22,6 +22,8 @@ class CreateCodeudoresTable extends Migration
             $table->string('oficio', 50);
             $table->string('telefono', 20);
             $table->string('celular', 20);
+            $table->string('url_cedula', 100)->nullable();
+            $table->string('url_carta_laboral', 100)->nullable();
             $table->unsignedInteger('personas_id');
             $table->foreign('personas_id')->references('id')->on('personas');
             $table->timestamps();

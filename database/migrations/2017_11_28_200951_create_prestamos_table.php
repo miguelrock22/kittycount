@@ -19,6 +19,7 @@ class CreatePrestamosTable extends Migration
             $table->string('porcentage', 20);
             $table->double('total_cobrar', 11, 2);
             $table->string('dia_cobro', 20);
+            $table->string('dia_cobro_2', 20)->nullable();
             $table->date('dia_solicitud');
             $table->boolean('estado');
             $table->string('cuotas', 20);
