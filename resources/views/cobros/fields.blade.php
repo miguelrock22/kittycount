@@ -14,8 +14,8 @@
 
 <!-- Personas Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('personas_id', 'Personas Id:') !!}
-    {!! Form::select('personas_id',[$prestamo->persona->id => $prestamo->persona->nombres],null, ['class' => 'form-control', 'disabled' => true]) !!}
+    {!! Form::label('personas_id', 'Cliente:') !!}
+    {!! Form::select('personas_id',[$prestamo->persona->id => $prestamo->persona->nombres],null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Users Id Field -->
