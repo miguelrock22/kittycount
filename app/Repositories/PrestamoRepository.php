@@ -24,6 +24,7 @@ class PrestamoRepository extends BaseRepository
         'porcentage',
         'total_cobrar',
         'dia_cobro',
+        'dia_cobro_2',
         'dia_solicitud',
         'estado',
         'cuotas',

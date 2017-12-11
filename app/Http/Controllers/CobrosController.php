@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use App\Models\Prestamo;
+use Illuminate\Http\Request;
 use App\Repositories\PrestamoRepository;
 use App\Repositories\HistorialRepository;
+use Prettus\Repository\Criteria\RequestCriteria;
 
 class CobrosController extends Controller
 {
@@ -15,13 +16,13 @@ class CobrosController extends Controller
     private $prestamoRepository;
     /** @var  HistorialRepository */
     private $historialRepository;
-    
+
     public function __construct(PrestamoRepository $prestamoRepo,HistorialRepository $historialRepo)
     {
         $this->prestamoRepository = $prestamoRepo;
         $this->historialRepository = $historialRepo;
     }
-    
+
 
     /**
      * Display a listing of the resource.
@@ -31,7 +32,8 @@ class CobrosController extends Controller
     public function index(Request $request)
     {
         $this->prestamoRepository->pushCriteria(new RequestCriteria($request));
-        $prestamos = $this->prestamoRepository->with('user')->get();
+        $prestamos = Prestamo::whereBetween('dia_cobro',[date('Y-m-d',strtotime("-1 days")),date('Y-m-d',strtotime("+1 days"))])->with('user')->get();
+
         return view('cobros.index')
             ->with('prestamos', $prestamos);
     }
@@ -55,7 +57,7 @@ class CobrosController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        
+
         $historial = $this->historialRepository->create($input);
 
         $prestamo = $this->prestamoRepository->findWithoutFail($input['prestamos_id']);
@@ -85,7 +87,7 @@ class CobrosController extends Controller
     public function edit($id)
     {
         $prestamo = $this->prestamoRepository->findWithoutFail($id);
-        
+
         if (empty($prestamo)) {
             Flash::error('Prestamo not found');
 
@@ -93,7 +95,7 @@ class CobrosController extends Controller
         }
 
         return view('cobros.edit')->with('prestamo', $prestamo);
-                
+
     }
 
     /**
