@@ -57,8 +57,12 @@ class CobrosController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+                
+        if(!isset($input['observacion']))
+                    $input['observacion'] = "";
 
         $historial = $this->historialRepository->create($input);
+       
 
         $prestamo = $this->prestamoRepository->findWithoutFail($input['prestamos_id']);
 
