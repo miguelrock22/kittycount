@@ -17,10 +17,23 @@
     {!! Form::number('prestamo', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Cuotas Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('cuotas', 'Número de cuotas:') !!}
+    {!!  Form::select('cuotas',[1 => 1,2=>2],null, ['class' => 'form-control']) !!}
+</div>
+
+
 <!-- Dia Cobro Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dia_cobro', 'Día Cobro:') !!}
     {!! Form::date('dia_cobro', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Dia Cobro 2 Field -->
+<div class="form-group hidden col-sm-6">
+    {!! Form::label('dia_cobro_2"', 'Segundo Día de Cobro:') !!}
+    {!! Form::date('dia_cobro_2', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Dia Solicitud Field -->
@@ -38,12 +51,6 @@
     </label>
 </div>
 
-<!-- Cuotas Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('cuotas', 'Número de cuotas:') !!}
-    {!!  Form::select('cuotas',[1 => 1,2=>2],null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Observacion Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('observacion', 'Observacion:') !!}
@@ -55,3 +62,15 @@
     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('prestamos.index') !!}" class="btn btn-default">Cancelar</a>
 </div>
+
+@section('scripts')
+<script>
+$('document').ready(function(){
+	$("#cuotas").change(function(){
+		if($(this).val() == 1)
+			$("#dia_cobro_2").parent().hide()
+		else
+			$("#dia_cobro_2").parent().show()
+	})
+});
+</script>
