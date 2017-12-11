@@ -55,6 +55,8 @@ class PrestamoController extends AppBaseController
     public function store(CreatePrestamoRequest $request)
     {
         $input = $request->all();
+		if(!isset($input['estado']))
+			$input['estado'] = 0;
         $input['porcentage'] = 10;
         $input['total_cobrar'] = $input['prestamo'] + ($input['prestamo'] * ($input['porcentage'] / 100 ));
         $input['valor_cuota'] = ($input['prestamo'] * ($input['porcentage'] / 100 ));
