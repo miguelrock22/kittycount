@@ -2,6 +2,7 @@
 <thead>
     <tr>
     <th>Cliente</th>
+    <th>Dirección</th>
     <th>Valor Cuota</th>
     <th>Dia Cobro</th>
         <th colspan="3">Acción</th>
@@ -11,6 +12,7 @@
 @foreach($prestamos as $prestamo)
     <tr>
         <td>{!! $prestamo->persona->nombres !!}</td>
+        <td>{!! $prestamo->persona->direccion_casa !!}</td>
         <td>$ {!! number_format($prestamo->valor_cuota) !!}</td>
         <td>{!! date('d-m-Y', strtotime($prestamo->dia_cobro)) !!}</td>
         <td>
