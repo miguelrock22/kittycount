@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Persona;
 use App\User;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
             'create' => 'crear',
             'edit' => 'editar',
         ]);
+        URL::forceScheme('http');
 
         View::composer(['*.create', '*.edit'], function ($view) {
             $parentesco = [

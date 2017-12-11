@@ -19,8 +19,40 @@
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
+@endsection
+@section('scripts')
+<script>
+    urlRefDatatables = '{{ route('datatableref') }}';
+    $('#referencias-table').DataTable({
+        "lengthMenu": [[10,20,30, -1], [10,20,30, "Todos"]],
+        "processing": true,
+        "serverSide": true,
+        "ajax": $.fn.dataTable.pipeline( {
+            url: urlRefDatatables,
+            pages: 5 // number of pages to cache
+        }),
+        "columns":[
+            {data:'nombres'},
+            {data:'telefonos'},
+            {data:'parentesco'},
+            {data:'id', "render":function(data, type, row, meta){
+                return (row.persona !== null) ? row.persona.nombres : "-";
+            }},
+            {data:'id', "render":function(data, type, row, meta){
+                return (row.codeudor !== null) ? row.codeudor.nombres : "-";
+            }},
+            {data:'id', "render":function(data, type, row, meta) {
+
+                return '<form method="POST" action="'+row.action+'" accept-charset="UTF-8"><input name="_token" type="hidden" value="'+row.token+'"><div class="btn-group">'+
+                    '<a href="'+row.show+'" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>'+
+                    '<a href="'+row.edit+'" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'+
+                    '<button type="submit" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button></div></form>';
+            }}
+        ],
+    });
+</script>
 @endsection
 

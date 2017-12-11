@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateReferenciaRequest;
-use App\Http\Requests\UpdateReferenciaRequest;
+use Response;
+use Flash, DataTables;
+use App\Models\Referencia;
+use Illuminate\Http\Request;
 use App\Repositories\ReferenciaRepository;
 use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
-use Flash;
+use App\Http\Requests\CreateReferenciaRequest;
+use App\Http\Requests\UpdateReferenciaRequest;
 use Prettus\Repository\Criteria\RequestCriteria;
-use Response;
 
 class ReferenciaController extends AppBaseController
 {
@@ -30,9 +31,8 @@ class ReferenciaController extends AppBaseController
     public function index(Request $request)
     {
         $this->referenciaRepository->pushCriteria(new RequestCriteria($request));
-        $referencias = $this->referenciaRepository->with(['persona','codeudor'])->get();
-        return view('referencias.index')
-            ->with('referencias', $referencias);
+        
+        return view('referencias.index');
     }
 
     /**
@@ -43,6 +43,18 @@ class ReferenciaController extends AppBaseController
     public function create()
     {
         return view('referencias.create');
+    }
+
+    public function datatable(Request $request) {
+
+        $referencias = Referencia::with(['persona','codeudor'])->get();
+        $referencias->each(function($referencia) {
+            $referencia->action = route("referencias.destroy", [$referencia->id]);
+            $referencia->token = csrf_token();
+            $referencia->edit = route("referencias.edit", [$referencia->id]);
+            $referencia->show = route("referencias.show", [$referencia->id]);
+        });
+        return DataTables::collection($referencias)->make(true);
     }
 
     /**

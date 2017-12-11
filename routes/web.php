@@ -26,6 +26,7 @@ Route::prefix('admin')->middleware(['auth', 'role:Administrador'])->group(functi
 	Route::resource('codeudores', 'CodeudorController');
 
 	Route::resource('referencias', 'ReferenciaController');
+	Route::get('datatable/referencias', 'ReferenciaController@datatable')->name('datatableref');
 
 	Route::resource('prestamos', 'PrestamoController');
 
