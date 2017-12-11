@@ -52,6 +52,8 @@
     {!! Form::file('url_carta_laboral', null, ['class' => 'form-control']) !!}
 </div>
 
+@if(!isset($persona))
+
 <!-- Referencias Section -->
 <div class="col-md-12">
     <h3>Referencias personales</h3>
@@ -131,6 +133,8 @@
         </div>
     </div>
 </div>
+
+@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

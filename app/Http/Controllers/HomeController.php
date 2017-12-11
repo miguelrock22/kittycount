@@ -3,19 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\PrestamoRepository;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    /** @var  PrestamoRepository */
+    private $prestamoRepository;
+    
+    public function __construct(PrestamoRepository $prestamoRepo)
     {
-        //$this->middleware('auth');
+        $this->prestamoRepository = $prestamoRepo;
     }
-
+    
     /**
      * Show the application dashboard.
      *

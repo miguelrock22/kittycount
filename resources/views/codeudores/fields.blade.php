@@ -47,6 +47,20 @@
     {!! Form::text('celular', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Url Cedula Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('url_cedula', 'Cédula:') !!}
+    {!! Form::file('url_cedula', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Url Carta Laboral Field -->
+<div class="form-group col-sm-4">
+    {!! Form::label('url_carta_laboral', 'Carta Laboral:') !!}
+    {!! Form::file('url_carta_laboral', null, ['class' => 'form-control']) !!}
+</div>
+
+@if(!isset($codeudor))
+
 <!-- Referencias Section -->
 <div class="col-md-12">
     <h3>Referencias personales</h3>
@@ -126,6 +140,7 @@
         </div>
     </div>
 </div>
+@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

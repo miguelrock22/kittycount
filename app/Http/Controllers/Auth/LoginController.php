@@ -46,6 +46,8 @@ class LoginController extends Controller
 
         if ( $user->hasRole('Administrador') ) {// do your margic here
             return redirect('admin/home');
+        }elseif($user->hasRole('Cobrador')){
+            return redirect('cobros');
         }
         return $this->redirectTo;
     }

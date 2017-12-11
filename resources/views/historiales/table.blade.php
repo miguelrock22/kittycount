@@ -1,24 +1,22 @@
 <table class="table table-responsive" id="historiales-table">
     <thead>
         <tr>
+            <th>Cliente</th>
+            <th>Cobrador</th>
             <th>Total Cobrado</th>
             <th>Cuotas</th>
             <th>Observación</th>
-            <th>Persona</th>
-            <th>Usuario</th>
-            <th>Prestamos</th>
             <th colspan="3">Acción</th>
         </tr>
     </thead>
     <tbody>
     @foreach($historiales as $historial)
         <tr>
-            <td>{!! $historial->total_cobrado !!}</td>
-            <td>{!! $historial->cuotas !!}</td>
-            <td>{!! $historial->observacion !!}</td>
             <td>{!! $historial->persona->nombres !!}</td>
             <td>{!! $historial->user->name !!}</td>
-            <td>{!! $historial->prestamos_id !!}</td>
+            <td>$ {!! number_format($historial->total_cobrado) !!}</td>
+            <td>{!! $historial->cuotas !!}</td>
+            <td>{!! $historial->observacion !!}</td>
             <td>
                 {!! Form::open(['route' => ['historiales.destroy', $historial->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

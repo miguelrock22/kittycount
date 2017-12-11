@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer(['prestamos.create', 'prestamos.edit'], function ($view) {
-            $movil = User::where('rol_id',2)->pluck('name','id');
+            $movil = User::role('Cobrador')->pluck('name','id');
             View::share('movil', $movil);
         });
 

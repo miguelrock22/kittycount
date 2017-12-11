@@ -8,7 +8,7 @@
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('users_id', 'Cobrador:') !!}
-    {!! Form::select('users_id', $movil, null, ['class' => 'form-control select2']) !!}
+    {!! Form::select('users_id', $movil, null, ['class' => 'form-control select2','placeholder'=>'Seleccione']) !!}
 </div>
 
 <!-- Prestamo Field -->

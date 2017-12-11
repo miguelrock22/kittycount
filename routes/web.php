@@ -31,3 +31,9 @@ Route::prefix('admin')->middleware(['auth', 'role:Administrador'])->group(functi
 
 	Route::resource('historiales', 'HistorialController');
 });
+
+Route::middleware(['auth', 'role:Cobrador'])->group(function() {
+
+	Route::resource('cobros', 'CobrosController');
+	
+});;

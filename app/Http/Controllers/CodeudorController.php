@@ -59,9 +59,15 @@ class CodeudorController extends AppBaseController
     public function store(CreateCodeudorRequest $request)
     {
         $input = $request->all();
-
+        if ($request->hasFile('url_cedula')) {
+            $input['url_cedula'] = $request->url_cedula->store('images', 'public');
+        }
+        
+        if ($request->hasFile('url_carta_laboral')) {
+            $input['url_carta_laboral'] = $request->url_carta_laboral->store('images', 'public');
+        }
+        
         $codeudor = $this->codeudorRepository->create($input);
-
         if($codeudor){
             for($i = 1; $i < 3; $i++){
                 $this->referenciaRepository->create(array(

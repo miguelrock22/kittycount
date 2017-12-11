@@ -44,7 +44,9 @@ class Codeudor extends Model
         'oficio',
         'telefono',
         'celular',
-        'personas_id'
+        'personas_id',
+        'url_cedula',
+        'url_carta_laboral'
     ];
 
     /**
