@@ -22,13 +22,16 @@ Route::prefix('admin')->middleware(['auth', 'role:Administrador'])->group(functi
 	Route::get('/home', 'HomeController@index')->name('inicio');
 
 	Route::resource('personas', 'PersonaController');
+	Route::get('datatable/personas', 'PersonaController@datatable')->name('datatableper');
 
 	Route::resource('codeudores', 'CodeudorController');
+	Route::get('datatable/codeudores', 'CodeudorController@datatable')->name('datatablecod');
 
 	Route::resource('referencias', 'ReferenciaController');
 	Route::get('datatable/referencias', 'ReferenciaController@datatable')->name('datatableref');
 
 	Route::resource('prestamos', 'PrestamoController');
+	Route::get('datatable/prestamos', 'PrestamoController@datatable')->name('datatablepre');
 
 	Route::resource('historiales', 'HistorialController');
 });

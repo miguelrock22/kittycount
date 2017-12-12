@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Response;
+use Flash, DataTables;
 use App\Http\Requests\CreatePersonaRequest;
 use App\Http\Requests\UpdatePersonaRequest;
+use App\Models\Persona;
 use App\Repositories\PersonaRepository;
 use App\Repositories\ReferenciaRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
-use Response;
 
 class PersonaController extends AppBaseController
 {
@@ -25,6 +26,17 @@ class PersonaController extends AppBaseController
         $this->referenciaRepository = $refRepo;
     }
 
+    public function datatable(Request $request) {    
+        $personas = Persona::with('user')->get();
+        $personas->each(function($persona) {
+            $persona->action = route("personas.destroy", [$persona->id]);
+            $persona->token = csrf_token();
+            $persona->edit = route("personas.edit", [$persona->id]);
+            $persona->show = route("personas.show", [$persona->id]);
+        });
+        return DataTables::collection($personas)->make(true);
+    }
+
     /**
      * Display a listing of the Persona.
      *
@@ -34,10 +46,8 @@ class PersonaController extends AppBaseController
     public function index(Request $request)
     {
         $this->personaRepository->pushCriteria(new RequestCriteria($request));
-        $personas = $this->personaRepository->with('user')->get();
 
-        return view('personas.index')
-            ->with('personas', $personas);
+        return view('personas.index');
     }
 
     /**

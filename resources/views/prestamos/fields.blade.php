@@ -33,7 +33,7 @@
 <!-- Dia Cobro 2 Field -->
 <div class="form-group hidden col-sm-6">
     {!! Form::label('dia_cobro_2"', 'Segundo Día de Cobro:') !!}
-    {!! Form::date('dia_cobro_2', null, ['class' => 'form-control']) !!}
+    {!! Form::date('dia_cobro_2', null, ['class' => 'form-control','id'=>'dia_cobro_2']) !!}
 </div>
 
 <!-- Dia Solicitud Field -->
@@ -68,9 +68,11 @@
 $('document').ready(function(){
 	$("#cuotas").change(function(){
 		if($(this).val() == 1)
-			$("#dia_cobro_2").parent().hide()
+			$("#dia_cobro_2").parent().addClass('hidden');
 		else
-			$("#dia_cobro_2").parent().show()
-	})
+			$("#dia_cobro_2").parent().removeClass("hidden");
+	});
+    $("#personas_id,#users_id").select2();
 });
 </script>
+@endsection

@@ -6,8 +6,9 @@ use App\Http\Requests\CreatePrestamoRequest;
 use App\Http\Requests\UpdatePrestamoRequest;
 use App\Repositories\PrestamoRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Prestamo;
 use Illuminate\Http\Request;
-use Flash;
+use Flash, DataTables;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -30,10 +31,20 @@ class PrestamoController extends AppBaseController
     public function index(Request $request)
     {
         $this->prestamoRepository->pushCriteria(new RequestCriteria($request));
-        $prestamos = $this->prestamoRepository->with('user')->get();
-        return view('prestamos.index')
-            ->with('prestamos', $prestamos);
+        return view('prestamos.index');
     }
+
+    public function datatable(Request $request) {    
+        $prestamos = Prestamo::with(['persona','user'])->get();
+        $prestamos->each(function($prestamo) {
+            $prestamo->action = route("prestamos.destroy", [$prestamo->id]);
+            $prestamo->token = csrf_token();
+            $prestamo->edit = route("prestamos.edit", [$prestamo->id]);
+            $prestamo->show = route("prestamos.show", [$prestamo->id]);
+        });
+        return DataTables::collection($prestamos)->make(true);
+    }
+
 
     /**
      * Show the form for creating a new Prestamo.

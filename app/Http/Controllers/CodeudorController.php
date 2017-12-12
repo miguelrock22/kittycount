@@ -7,8 +7,9 @@ use App\Http\Requests\UpdateCodeudorRequest;
 use App\Repositories\CodeudorRepository;
 use App\Repositories\ReferenciaRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Codeudor;
 use Illuminate\Http\Request;
-use Flash;
+use Flash, DataTables;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -33,10 +34,18 @@ class CodeudorController extends AppBaseController
     public function index(Request $request)
     {
         $this->codeudorRepository->pushCriteria(new RequestCriteria($request));
-        $codeudores = $this->codeudorRepository->with(['persona'])->get();
+        return view('codeudores.index');
+    }
 
-        return view('codeudores.index')
-            ->with('codeudores', $codeudores);
+    public function datatable(Request $request) {    
+        $codeudores = Codeudor::with('persona')->get();
+        $codeudores->each(function($codeudor) {
+            $codeudor->action = route("codeudores.destroy", [$codeudor->id]);
+            $codeudor->token = csrf_token();
+            $codeudor->edit = route("codeudores.edit", [$codeudor->id]);
+            $codeudor->show = route("codeudores.show", [$codeudor->id]);
+        });
+        return DataTables::collection($codeudores)->make(true);
     }
 
     /**
