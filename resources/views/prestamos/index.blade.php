@@ -36,7 +36,7 @@
         }),
         "columns":[
             {data:'persona.nombres'},
-            {data:'prestamo'},
+            {data:'prestamo',render: $.fn.dataTable.render.number( ',', '.', 0 , '$')},
             {data:'dia_cobro'},
             {data:'user.name'},
             {data:'id', "render":function(data, type, row, meta) {

@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\Historial;
 use Illuminate\Http\Request;
 use Flash,DataTables;
+use Carbon\Carbon;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -43,7 +44,9 @@ class HistorialController extends AppBaseController
             $historial->edit = route("historiales.edit", [$historial->id]);
             $historial->show = route("historiales.show", [$historial->id]);
         });
-        return DataTables::collection($historiales)->make(true);
+        return DataTables::collection($historiales)->editColumn('created_at', function ($historial) {
+            return $historial->created_at ? with(new Carbon($historial->created_at))->format('d-m-Y') : '';}
+        )->make(true);
     }
 
     /**

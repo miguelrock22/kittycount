@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\Prestamo;
 use Illuminate\Http\Request;
 use Flash, DataTables;
+use Carbon\Carbon;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -42,7 +43,9 @@ class PrestamoController extends AppBaseController
             $prestamo->edit = route("prestamos.edit", [$prestamo->id]);
             $prestamo->show = route("prestamos.show", [$prestamo->id]);
         });
-        return DataTables::collection($prestamos)->make(true);
+        return DataTables::collection($prestamos)->editColumn('dia_cobro', function ($prestamo) {
+            return $prestamo->dia_cobro ? with(new Carbon($prestamo->dia_cobro))->format('d-m-Y') : '';}
+        )->make(true);
     }
 
 
