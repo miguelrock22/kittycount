@@ -34,6 +34,9 @@
             url: urlPreDatatables,
             pages: 5 // number of pages to cache
         }),
+        "language": {
+            "url": "{{asset('plugins/datatables/Spanish.json')}}"
+        },
         "columns":[
             {data:'persona.nombres'},
             {data:'prestamo',render: $.fn.dataTable.render.number( ',', '.', 0 , '$')},

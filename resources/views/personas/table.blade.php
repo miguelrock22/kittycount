@@ -6,7 +6,6 @@
             <th>Oficio</th>
             <th>Telefono</th>
             <th>Celular</th>
-            <th>Prestamista</th>
             <th>Acción</th>
         </tr>
     </thead>

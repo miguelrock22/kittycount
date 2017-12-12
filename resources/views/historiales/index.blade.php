@@ -34,6 +34,9 @@
             url: urlHisDatatables,
             pages: 5 // number of pages to cache
         }),
+        "language": {
+            "url": "{{asset('plugins/datatables/Spanish.json')}}"
+        },
         "columns":[
             {data:'persona.nombres'},
             {data:'user.name'},

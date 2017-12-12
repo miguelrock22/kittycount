@@ -34,6 +34,9 @@
             url: urlCodDatatables,
             pages: 5 // number of pages to cache
         }),
+        "language": {
+            "url": "{{asset('plugins/datatables/Spanish.json')}}"
+        },
         "columns":[
             {data:'nombres'},
             {data:'direccion_casa'},
