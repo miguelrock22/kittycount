@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
             View::share('personas', $personas);
         });
 
-        View::composer(['prestamos.create', 'prestamos.edit'], function ($view) {
+        View::composer(['prestamos.create', 'prestamos.edit','historiales.create','historiales.edit'], function ($view) {
             $movil = User::role('Cobrador')->pluck('name','id');
             View::share('movil', $movil);
         });
