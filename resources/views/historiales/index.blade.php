@@ -23,4 +23,30 @@
         </div>
     </div>
 @endsection
+@section('scripts')
+<script>
+    urlHisDatatables = '{{ route('datatablehis') }}';
+    $('#historiales-table').DataTable({
+        "lengthMenu": [[10,20,30, -1], [10,20,30, "Todos"]],
+        "processing": true,
+        "serverSide": true,
+        "ajax": $.fn.dataTable.pipeline( {
+            url: urlHisDatatables,
+            pages: 5 // number of pages to cache
+        }),
+        "columns":[
+            {data:'persona.nombres'},
+            {data:'user.name'},
+            {data:'total_cobrado'},
+            {data:'observacion'},
+            {data:'id', "render":function(data, type, row, meta) {
 
+                return '<form method="POST" action="'+row.action+'" accept-charset="UTF-8"><input name="_token" type="hidden" value="'+row.token+'"><div class="btn-group">'+
+                    '<a href="'+row.show+'" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>'+
+                    '<a href="'+row.edit+'" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'+
+                    '<button type="submit" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button></div></form>';
+            }}
+        ],
+    });
+</script>
+@endsection

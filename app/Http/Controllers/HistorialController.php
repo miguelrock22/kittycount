@@ -6,8 +6,9 @@ use App\Http\Requests\CreateHistorialRequest;
 use App\Http\Requests\UpdateHistorialRequest;
 use App\Repositories\HistorialRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Historial;
 use Illuminate\Http\Request;
-use Flash;
+use Flash,DataTables;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -30,10 +31,19 @@ class HistorialController extends AppBaseController
     public function index(Request $request)
     {
         $this->historialRepository->pushCriteria(new RequestCriteria($request));
-        $historiales = $this->historialRepository->all();
 
-        return view('historiales.index')
-            ->with('historiales', $historiales);
+        return view('historiales.index');
+    }
+    
+    public function datatable(Request $request) {    
+        $historiales = Historial::with(['persona','user'])->get();
+        $historiales->each(function($historial) {
+            $historial->action = route("historiales.destroy", [$historial->id]);
+            $historial->token = csrf_token();
+            $historial->edit = route("historiales.edit", [$historial->id]);
+            $historial->show = route("historiales.show", [$historial->id]);
+        });
+        return DataTables::collection($historiales)->make(true);
     }
 
     /**
