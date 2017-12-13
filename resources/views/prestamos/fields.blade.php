@@ -14,7 +14,7 @@
 <!-- Prestamo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('prestamo', 'Valor a prestar:') !!}
-    {!! Form::number('prestamo', null, ['class' => 'form-control']) !!}
+    {!! Form::text('prestamo', null, ['class' => 'form-control price-field']) !!}
 </div>
 
 <!-- Cuotas Field -->
@@ -72,7 +72,6 @@ $('document').ready(function(){
 		else
 			$("#dia_cobro_2").parent().removeClass("hidden");
 	});
-    $("#personas_id,#users_id").select2();
 });
 </script>
 @endsection

@@ -177,6 +177,7 @@
     {!!Html::script("plugins/datepicker/bootstrap-datepicker.js")!!}
     {!!Html::script("plugins/datepicker/locales/bootstrap-datepicker.es.js")!!}
     {!!Html::script("plugins/pace/pace.min.js")!!}
+    {!!Html::script("plugins/jquery-priceformat/jquery.priceformat.min.js")!!}
     {!!Html::script("js/config.js")!!}
     <script>
         AppName = '{{ config('app.name', 'Laravel') }}';

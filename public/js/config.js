@@ -31,6 +31,14 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $('.price-field').priceFormat({
+        centsLimit: 0,
+        prefix: '$'
+    });
+
+    
+    $("#personas_id,#users_id").select2();
+
 });
 //
 // Pipelining function for DataTables. To be used to the `ajax` option of DataTables

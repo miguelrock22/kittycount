@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Persona;
+use App\Models\Codeudor;
 use App\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
@@ -44,6 +45,10 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['prestamos.create', 'prestamos.edit','historiales.create','historiales.edit'], function ($view) {
             $movil = User::role('Cobrador')->pluck('name','id');
             View::share('movil', $movil);
+        });
+        View::composer(['referencias.create', 'referencias.edit'], function ($view) {
+            $codeudor = Codeudor::pluck('cedula', 'id');
+            View::share('codeudor', $codeudor);
         });
 
     }

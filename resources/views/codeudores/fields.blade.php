@@ -147,10 +147,3 @@
     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('codeudores.index') !!}" class="btn btn-default">Cancelar</a>
 </div>
-@section('scripts')
-<script>
-    $('document').ready(function(){
-        $("#personas_id").select2()
-    });
-</script>
-@endsection

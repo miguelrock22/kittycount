@@ -13,7 +13,7 @@
 <!-- Total Cobrado Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('total_cobrado', 'Total Cobrado:') !!}
-    {!! Form::number('total_cobrado', null, ['class' => 'form-control']) !!}
+    {!! Form::text('total_cobrado', null, ['class' => 'form-control price-field']) !!}
 </div>
 
 <!-- Cuotas Field -->
@@ -39,11 +39,3 @@
     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('historiales.index') !!}" class="btn btn-default">Cancelar</a>
 </div>
-
-@section('scripts')
-<script>
-$('document').ready(function(){
-    $("#personas_id,#users_id").select2();
-});
-</script>
-@endsection

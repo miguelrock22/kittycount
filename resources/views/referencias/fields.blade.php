@@ -18,14 +18,14 @@
 
 <!-- Personas Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('personas_id', 'Personas Id:') !!}
-    {!! Form::number('personas_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('personas_id', 'Cedula Cliente:') !!}
+    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2','placeholder'=>'Seleccione']) !!}
 </div>
 
 <!-- Codeudores Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('codeudores_id', 'Codeudores Id:') !!}
-    {!! Form::number('codeudores_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('codeudores_id', $codeudor, null, ['class' => 'form-control','placeholder'=>'Seleccione']) !!}
 </div>
 
 <!-- Submit Field -->
