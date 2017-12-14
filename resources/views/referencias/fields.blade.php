@@ -4,16 +4,41 @@
     {!! Form::text('nombres', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Telefonos Field -->
+<!-- Dirección Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('telefonos', 'Telefonos:') !!}
-    {!! Form::text('telefonos', null, ['class' => 'form-control']) !!}
+    {!! Form::label('direccion_casa', 'Dirección:') !!}
+    {!! Form::text('direccion_casa', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Dirección trabajo Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('direccion_trabajo', 'Dirección trabajo:') !!}
+    {!! Form::text('direccion_trabajo', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Telefonos Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('telefono', 'Teléfono:') !!}
+    {!! Form::text('telefono', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Telefonos Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('telefono_trabajo', 'Teléfono trabajo:') !!}
+    {!! Form::text('telefono_trabajo', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Telefonos Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('celular', 'Celular:') !!}
+    {!! Form::text('celular', null, ['class' => 'form-control']) !!}
+</div>
+
+<?php $parentesco['Amig@'] = 'Amig@'; ?>
 <!-- Parentesco Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('parentesco', 'Parentesco:') !!}
-    {!! Form::text('parentesco', null, ['class' => 'form-control']) !!}
+{!! Form::label('parentesco', '2. Parentesco:') !!}
+{!! Form::select('parentesco',$parentesco, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Personas Id Field -->

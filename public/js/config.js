@@ -37,7 +37,7 @@ jQuery(document).ready(function ($) {
     });
 
     
-    $("#personas_id,#users_id").select2();
+    $("#personas_id,#users_id,#codeudores_id").select2();
 
 });
 //

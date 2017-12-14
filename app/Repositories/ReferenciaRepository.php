@@ -21,7 +21,11 @@ class ReferenciaRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'nombres',
-        'telefonos',
+        'direccion_casa',
+        'direccion_trabajo',
+        'telefono',
+        'telefono_trabajo',
+        'celular',
         'parentesco',
         'personas_id',
         'codeudores_id'

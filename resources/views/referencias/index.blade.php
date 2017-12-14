@@ -39,12 +39,13 @@
         },
         "columns":[
             {data:'nombres'},
-            {data:'telefonos'},
+            {data:'telefono'},
+            {data:'direccion_casa'},
             {data:'parentesco'},
-            {data:'id', "render":function(data, type, row, meta){
+            {data:'personas_id', "render":function(data, type, row, meta){
                 return (row.persona !== null) ? row.persona.nombres : "-";
             }},
-            {data:'id', "render":function(data, type, row, meta){
+            {data:'codeudores_id', "render":function(data, type, row, meta){
                 return (row.codeudor !== null) ? row.codeudor.nombres : "-";
             }},
             {data:'id', "render":function(data, type, row, meta) {

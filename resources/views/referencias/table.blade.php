@@ -2,7 +2,8 @@
     <thead>
         <tr>
             <th>Nombres</th>
-            <th>Telefonos</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
             <th>Parentesco</th>
             <th>Persona</th>
             <th>Codeudor</th>

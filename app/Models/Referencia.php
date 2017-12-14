@@ -35,7 +35,11 @@ class Referencia extends Model
 
     public $fillable = [
         'nombres',
-        'telefonos',
+        'direccion_casa',
+        'direccion_trabajo',
+        'telefono',
+        'telefono_trabajo',
+        'celular',
         'parentesco',
         'personas_id',
         'codeudores_id'
@@ -49,7 +53,11 @@ class Referencia extends Model
     protected $casts = [
         'id' => 'integer',
         'nombres' => 'string',
-        'telefonos' => 'string',
+        'direccion_casa' => 'string',
+        'direccion_trabajo' => 'string',
+        'telefono' => 'string',
+        'telefono_trabajo' => 'string',
+        'celular' => 'string',
         'parentesco' => 'string',
         'personas_id' => 'integer',
         'codeudores_id' => 'integer'

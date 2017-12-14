@@ -67,7 +67,6 @@ class CodeudorController extends AppBaseController
      */
     public function store(CreateCodeudorRequest $request)
     {
-        dd($request->all());
         $input = $request->all();
         if ($request->hasFile('url_cedula')) {
             $input['url_cedula'] = $request->url_cedula->store('images', 'public');
@@ -82,19 +81,27 @@ class CodeudorController extends AppBaseController
             for($i = 1; $i < 3; $i++){
                 $this->referenciaRepository->create(array(
                     'nombres' => $input['nombres_pers_'.$i],
-                    'telefonos' => $input['telefonos_pers_'.$i],
+                    'direccion_casa' => $input['direccion_casa_pers_'.$i],
+                    'direccion_trabajo' => $input['direccion_trabajo_pers_'.$i],
+                    'telefono' => $input['telefono_pers_'.$i],
+                    'telefono_trabajo' => $input['telefono_trabajo_pers_'.$i],
+                    'celular' => $input['celular_pers_'.$i],
                     'parentesco' => $input['parentesco_pers_'.$i],
-                    'codeudores_id' => $codeudor->id,
-                    'personas_id' => null
+                    'personas_id' => null,
+                    'codeudores_id' => $codeudor->id
                 ));
             }
             for($i = 1; $i < 3; $i++){
                 $this->referenciaRepository->create(array(
                     'nombres' => $input['nombres_fam_'.$i],
-                    'telefonos' => $input['telefonos_fam_'.$i],
+                    'direccion_casa' => $input['direccion_casa_fam_'.$i],
+                    'direccion_trabajo' => $input['direccion_trabajo_fam_'.$i],
+                    'telefono' => $input['telefono_fam_'.$i],
+                    'telefono_trabajo' => $input['telefono_trabajo_fam_'.$i],
+                    'celular' => $input['celular_fam_'.$i],
                     'parentesco' => $input['parentesco_fam_'.$i],
-                    'codeudores_id' => $codeudor->id,
-                    'personas_id' => null
+                    'personas_id' => null,
+                    'codeudores_id' => $codeudor->id
                 ));
             }
         }

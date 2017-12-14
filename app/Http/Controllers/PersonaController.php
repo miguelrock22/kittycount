@@ -90,7 +90,11 @@ class PersonaController extends AppBaseController
             for($i = 1; $i < 3; $i++){
                 $this->referenciaRepository->create(array(
                     'nombres' => $input['nombres_pers_'.$i],
-                    'telefonos' => $input['telefonos_pers_'.$i],
+                    'direccion_casa' => $input['direccion_casa_pers_'.$i],
+                    'direccion_trabajo' => $input['direccion_trabajo_pers_'.$i],
+                    'telefono' => $input['telefono_pers_'.$i],
+                    'telefono_trabajo' => $input['telefono_trabajo_pers_'.$i],
+                    'celular' => $input['celular_pers_'.$i],
                     'parentesco' => $input['parentesco_pers_'.$i],
                     'personas_id' => $persona->id,
                     'codeudores_id' => null
@@ -99,7 +103,11 @@ class PersonaController extends AppBaseController
             for($i = 1; $i < 3; $i++){
                 $this->referenciaRepository->create(array(
                     'nombres' => $input['nombres_fam_'.$i],
-                    'telefonos' => $input['telefonos_fam_'.$i],
+                    'direccion_casa' => $input['direccion_casa_fam_'.$i],
+                    'direccion_trabajo' => $input['direccion_trabajo_fam_'.$i],
+                    'telefono' => $input['telefono_fam_'.$i],
+                    'telefono_trabajo' => $input['telefono_trabajo_fam_'.$i],
+                    'celular' => $input['celular_fam_'.$i],
                     'parentesco' => $input['parentesco_fam_'.$i],
                     'personas_id' => $persona->id,
                     'codeudores_id' => null
@@ -217,8 +225,10 @@ class PersonaController extends AppBaseController
             'nombres' => $request->nombres,
             'direccion_casa' => $request->direccion_casa,
             'direccion_trabajo' => $request->direccion_trabajo,
+            'lugar_trabajo' => $request->lugar_trabajo,
             'oficio' => $request->oficio,
             'telefono' => $request->telefono,
+            'telefono_trabajo' => $request->telefono_trabajo,
             'celular' => $request->celular,
             'url_cedula' => $url_cedula,
             'url_carta_laboral' => $url_carta_laboral,
