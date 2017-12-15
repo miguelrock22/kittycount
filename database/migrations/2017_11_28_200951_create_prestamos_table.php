@@ -17,7 +17,7 @@ class CreatePrestamosTable extends Migration
             $table->increments('id');
             $table->double('prestamo', 12, 2);
             $table->string('porcentage', 20);
-            $table->double('abono_capital', 12, 2);
+            $table->double('abono_capital', 12, 2)->nullable();
             $table->date('dia_cobro');
             $table->date('dia_cobro_2')->nullable();
             $table->date('dia_solicitud');
@@ -25,7 +25,7 @@ class CreatePrestamosTable extends Migration
             $table->string('cuotas', 20);
             $table->double('valor_cuota', 8, 2);
             $table->double('valor_cuota_2', 8, 2)->nullable();
-            $table->text('observacion');
+            $table->text('observacion')->nullable();
             $table->unsignedInteger('personas_id')->nullable();
             $table->foreign('personas_id')->references('id')->on('personas');
             $table->unsignedInteger('users_id')->nullable();

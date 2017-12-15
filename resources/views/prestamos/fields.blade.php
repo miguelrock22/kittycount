@@ -13,9 +13,10 @@
 
 <!-- Prestamo Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('prestamo', 'Valor a prestar:') !!}
-    {!! Form::text('prestamo', null, ['class' => 'form-control price-field']) !!}
+    {!! Form::label('prestamo_val', 'Valor a prestar:') !!}
+    {!! Form::text('prestamo_val', (isset($prestamo) ? $prestamo->prestamo : 0 ), ['class' => 'form-control price-field']) !!}
 </div>
+{!! Form::hidden('prestamo',null,['id' => 'prestamo']) !!}
 
 <!-- Cuotas Field -->
 <div class="form-group col-sm-6">
@@ -23,11 +24,10 @@
     {!!  Form::select('cuotas',[1 => 1,2=>2],null, ['class' => 'form-control']) !!}
 </div>
 
-
 <!-- Dia Cobro Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dia_cobro', 'Día Cobro:') !!}
-    {!! Form::date('dia_cobro', null, ['class' => 'form-control']) !!}
+    {!! Form::date('dia_cobro', (isset($prestamo) ? date('Y-m-d',strtotime($prestamo->dia_cobro)) : 0 ), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Dia Cobro 2 Field -->
@@ -39,16 +39,7 @@
 <!-- Dia Solicitud Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dia_solicitud', 'Día Solicitud:') !!}
-    {!! Form::date('dia_solicitud',date('Y-m-d'), ['class' => 'form-control']) !!}
-</div>
-
-<!-- Estado Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('estado', 'Estado:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('estado', false) !!}
-        {!! Form::checkbox('estado', '1', null) !!}
-    </label>
+    {!! Form::date('dia_solicitud',(isset($prestamo) ? $prestamo->dia_solicitud : date('Y-m-d')), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Observacion Field -->
@@ -56,6 +47,13 @@
     {!! Form::label('observacion', 'Observacion:') !!}
     {!! Form::textarea('observacion', null, ['class' => 'form-control']) !!}
 </div>
+
+<!-- Prestamo Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('abono_capital_val', 'Abono al capital:') !!}
+    {!! Form::text('abono_capital_val', (isset($prestamo) ? $prestamo->abono_capital : 0 ), ['class' => 'form-control price-field']) !!}
+</div>
+{!! Form::hidden('abono_capital',null,['id' => 'abono_capital']) !!}
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
@@ -71,7 +69,10 @@ $('document').ready(function(){
 			$("#dia_cobro_2").parent().addClass('hidden');
 		else
 			$("#dia_cobro_2").parent().removeClass("hidden");
-	});
+    });
+    $('form').submit(function(){
+        $("#prestamo").val($("#prestamo_val").unmask());
+    });
 });
 </script>
 @endsection
