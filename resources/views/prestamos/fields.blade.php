@@ -31,15 +31,31 @@
 </div>
 
 <!-- Dia Cobro 2 Field -->
-<div class="form-group hidden col-sm-6">
-    {!! Form::label('dia_cobro_2"', 'Segundo Día de Cobro:') !!}
-    {!! Form::date('dia_cobro_2', null, ['class' => 'form-control','id'=>'dia_cobro_2']) !!}
+<div class="form-group {!! (isset($prestamo->dia_cobro_2) ? '' : 'hidden' ) !!} col-sm-6">
+    {!! Form::label('dia_cobro_2', 'Segundo Día de Cobro:') !!}
+    {!! Form::date('dia_cobro_2', (isset($prestamo->dia_cobro_2) ? date('Y-m-d',strtotime($prestamo->dia_cobro_2)) : 0 ), ['class' => 'form-control','id'=>'dia_cobro_2']) !!}
 </div>
 
-<!-- Dia Solicitud Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('dia_solicitud', 'Día Solicitud:') !!}
-    {!! Form::date('dia_solicitud',(isset($prestamo) ? $prestamo->dia_solicitud : date('Y-m-d')), ['class' => 'form-control']) !!}
+    {!! Form::label('asignar_cuota', 'Asignar cuota:') !!}
+    <label class="checkbox-inline">
+        {!! Form::checkbox('asignar_cuota') !!}
+    </label>
+</div>
+
+<div class="hidden cuotas">
+    <!-- Cuota 1 Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('valor_cuota_val', 'Valor primera cuota:') !!}
+        {!! Form::text('valor_cuota_val', (isset($prestamo) ? $prestamo->valor_cuota : 0 ), ['class' => 'form-control price-field']) !!}
+    </div>
+    {!! Form::hidden('valor_cuota',null,['id' => 'valor_cuota']) !!}
+    <!-- Cuota 2 Field -->
+    <div class="form-group {!! (isset($prestamo->valor_cuota_2) ? '' : 'hidden' ) !!} col-sm-6">
+        {!! Form::label('valor_cuota_2_val', 'Valor segunda cuota:') !!}
+        {!! Form::text('valor_cuota_2_val', (isset($prestamo) ? $prestamo->valor_cuota_2 : 0 ), ['class' => 'form-control price-field']) !!}
+    </div>
+    {!! Form::hidden('valor_cuota_2',null,['id' => 'valor_cuota_2']) !!}
 </div>
 
 <!-- Observacion Field -->
@@ -49,7 +65,7 @@
 </div>
 
 <!-- Prestamo Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-6 {!! (isset($prestamo) ? '' : 'hidden') !!}">
     {!! Form::label('abono_capital_val', 'Abono al capital:') !!}
     {!! Form::text('abono_capital_val', (isset($prestamo) ? $prestamo->abono_capital : 0 ), ['class' => 'form-control price-field']) !!}
 </div>
@@ -65,13 +81,27 @@
 <script>
 $('document').ready(function(){
 	$("#cuotas").change(function(){
-		if($(this).val() == 1)
+		if($(this).val() == 1){
 			$("#dia_cobro_2").parent().addClass('hidden');
-		else
+			$("#valor_cuota_2").parent().addClass('hidden');
+        }
+		else{
 			$("#dia_cobro_2").parent().removeClass("hidden");
+            $("#valor_cuota_2_val").parent().removeClass('hidden');
+        }
+    });
+    $("#asignar_cuota").change(function(){
+        if($(this).prop('checked') === false)
+            $(".cuotas").addClass("hidden");
+        else
+            $(".cuotas").removeClass("hidden");
+
     });
     $('form').submit(function(){
         $("#prestamo").val($("#prestamo_val").unmask());
+        $("#valor_cuota").val($("#valor_cuota_val").unmask());
+        $("#valor_cuota_2").val($("#valor_cuota_2_val").unmask());
+        $("#abono_capital").val($("#abono_capital_val").unmask());
     });
 });
 </script>

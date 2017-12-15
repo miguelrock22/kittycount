@@ -22,13 +22,14 @@ class PrestamoRepository extends BaseRepository
     protected $fieldSearchable = [
         'prestamo',
         'porcentage',
-        'total_cobrar',
+        'abono_capital',
         'dia_cobro',
         'dia_cobro_2',
         'dia_solicitud',
         'estado',
         'cuotas',
         'valor_cuota',
+        'valor_cuota_2',
         'observacion',
         'personas_id',
         'users_id'

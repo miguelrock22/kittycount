@@ -74,8 +74,19 @@ class PrestamoController extends AppBaseController
 		if(!isset($input['observacion']))
 			$input['observacion'] = "";
         $input['porcentage'] = 10;
+        $input['dia_solicitud'] = date('Y-m-d');
         $input['abono_capital'] = 0;
-        $input['valor_cuota'] = ($input['prestamo'] * ($input['porcentage'] / 100 ));
+        if(!isset($input['asignar_cuota'])){
+            if($input['cuotas'] == 1){
+                $input['valor_cuota'] = ($input['prestamo'] * ($input['porcentage'] / 100 ));
+                $input['valor_cuota_2'] = 0;
+            }
+            else{
+                $cuota  = ($input['prestamo'] * ($input['porcentage'] / 100 )) / 2;
+                $input['valor_cuota'] = $cuota;
+                $input['valor_cuota_2'] = $cuota;
+            }
+        }
 
         $prestamo = $this->prestamoRepository->create($input);
 
@@ -135,14 +146,27 @@ class PrestamoController extends AppBaseController
     public function update($id, UpdatePrestamoRequest $request)
     {
         $prestamo = $this->prestamoRepository->findWithoutFail($id);
+        $input = $request->all();
 
         if (empty($prestamo)) {
             Flash::error('Prestamo not found');
 
             return redirect(route('prestamos.index'));
         }
+        $input['porcentage'] = 10;
+        if($input['abono_capital'] != 0){
+            if($input['cuotas'] == 1){
+                $input['valor_cuota'] = (($input['prestamo'] - $input['abono_capital']) * ($input['porcentage'] / 100 ));
+                $input['valor_cuota_2'] = 0;
+            }
+            else{
+                $cuota  = (($input['prestamo'] - $input['abono_capital']) * ($input['porcentage'] / 100 )) / 2;
+                $input['valor_cuota'] = $cuota;
+                $input['valor_cuota_2'] = $cuota;
+            }
+        }
 
-        $prestamo = $this->prestamoRepository->update($request->all(), $id);
+        $prestamo = $this->prestamoRepository->update($input, $id);
 
         Flash::success('Prestamo updated successfully.');
 
