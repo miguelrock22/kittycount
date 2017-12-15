@@ -39,6 +39,9 @@
         },
         "columns":[
             {data:'persona.nombres'},
+            {data:'persona.celular'},
+            {data:'persona.direccion_casa'},
+            {data:'persona.direccion_trabajo'},
             {data:'prestamo',render: $.fn.dataTable.render.number( ',', '.', 0 , '$')},
             {data:'dia_cobro'},
             {data:'user.name'},
