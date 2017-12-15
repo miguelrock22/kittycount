@@ -11,7 +11,9 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('prestamos.show_fields')
-                    <a href="{!! route('prestamos.index') !!}" class="btn btn-default">Atras</a>
+                    <div class="col-md-10 text-center">
+                        <a href="{!! route('prestamos.index') !!}" class="btn btn-default">Atras</a>
+                    </div>
                 </div>
             </div>
         </div>

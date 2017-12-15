@@ -1,54 +1,69 @@
 <!-- Id Field -->
-<div class="form-group">
+<div class="col-md-4">
     {!! Form::label('id', 'Id:') !!}
     <p>{!! $referencia->id !!}</p>
 </div>
 
 <!-- Nombres Field -->
-<div class="form-group">
+<div class="col-md-4">
     {!! Form::label('nombres', 'Nombres:') !!}
     <p>{!! $referencia->nombres !!}</p>
 </div>
 
+<!-- Direccion Field -->
+<div class="col-md-4">
+    {!! Form::label('direccion_casa', 'Dirección casa:') !!}
+    <p>{!! $referencia->direccion_casa !!}</p>
+</div>
+
+<!-- Direccion trabajo Field -->
+<div class="col-md-4">
+    {!! Form::label('direccion_trabajo', 'Dirección trabajo:') !!}
+    <p>{!! $referencia->direccion_trabajo !!}</p>
+</div>
+
 <!-- Telefonos Field -->
-<div class="form-group">
-    {!! Form::label('telefonos', 'Telefonos:') !!}
-    <p>{!! $referencia->telefonos !!}</p>
+<div class="col-md-4">
+    {!! Form::label('telefonos', 'Teléfono:') !!}
+    <p>{!! $referencia->telefono !!}</p>
+</div>
+
+<!-- Telefono trabajo Field -->
+<div class="col-md-4">
+    {!! Form::label('telefono_trabajo', 'Teléfono trabajo:') !!}
+    <p>{!! $referencia->telefono_trabajo !!}</p>
+</div>
+
+<!-- celular Field -->
+<div class="col-md-4">
+    {!! Form::label('celular', 'Celular:') !!}
+    <p>{!! $referencia->celular !!}</p>
 </div>
 
 <!-- Parentesco Field -->
-<div class="form-group">
+<div class="col-md-4">
     {!! Form::label('parentesco', 'Parentesco:') !!}
     <p>{!! $referencia->parentesco !!}</p>
 </div>
 
 <!-- Personas Id Field -->
-<div class="form-group">
-    {!! Form::label('personas_id', 'Personas Id:') !!}
-    <p>{!! $referencia->personas_id !!}</p>
+@if($referencia->personas_id != null)
+<div class="col-md-4">
+    {!! Form::label('personas_id', 'Cliente asociado:') !!}
+    <p>{!! $referencia->persona->nombres !!}</p>
 </div>
+@endif
 
 <!-- Codeudores Id Field -->
-<div class="form-group">
-    {!! Form::label('codeudores_id', 'Codeudores Id:') !!}
-    <p>{!! $referencia->codeudores_id !!}</p>
+@if($referencia->codeudores_id != null)
+<div class="col-md-4">
+    {!! Form::label('codeudores_id', 'Codeudor asociado:') !!}
+    <p>{!! $referencia->codeudor->nombres !!}</p>
 </div>
+@endif
 
 <!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+<div class="col-md-4">
+    {!! Form::label('created_at', 'Día de registro:') !!}
     <p>{!! $referencia->created_at !!}</p>
 </div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $referencia->updated_at !!}</p>
-</div>
-
-<!-- Deleted At Field -->
-<div class="form-group">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
-    <p>{!! $referencia->deleted_at !!}</p>
-</div>
-

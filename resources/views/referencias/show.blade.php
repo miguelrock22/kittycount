@@ -11,7 +11,9 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('referencias.show_fields')
-                    <a href="{!! route('referencias.index') !!}" class="btn btn-default">Atras</a>
+                    <div class="col-md-10 text-center">
+                        <a href="{!! route('referencias.index') !!}" class="btn btn-default">Atras</a>
+                    </div>
                 </div>
             </div>
         </div>

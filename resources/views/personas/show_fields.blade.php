@@ -7,7 +7,7 @@
 
     <!-- Cedula Field -->
     <div class="col-md-4">
-        {!! Form::label('cedula', 'Cedula:') !!}
+        {!! Form::label('cedula', 'Cédula:') !!}
         <p>{!! $persona->cedula !!}</p>
     </div>
 
@@ -19,14 +19,20 @@
 
     <!-- Direccion Casa Field -->
     <div class="col-md-4">
-        {!! Form::label('direccion_casa', 'Direccion Casa:') !!}
+        {!! Form::label('direccion_casa', 'Dirección Casa:') !!}
         <p>{!! $persona->direccion_casa !!}</p>
     </div>
 
     <!-- Direccion Trabajo Field -->
     <div class="col-md-4">
-        {!! Form::label('direccion_trabajo', 'Direccion Trabajo:') !!}
+        {!! Form::label('direccion_trabajo', 'Dirección Trabajo:') !!}
         <p>{!! $persona->direccion_trabajo !!}</p>
+    </div>
+    
+    <!-- Direccion Trabajo Field -->
+    <div class="col-md-4">
+        {!! Form::label('lugar_trabajo', 'Lugar Trabajo:') !!}
+        <p>{!! $persona->lugar_trabajo !!}</p>
     </div>
 
     <!-- Oficio Field -->
@@ -37,8 +43,14 @@
 
     <!-- Telefono Field -->
     <div class="col-md-4">
-        {!! Form::label('telefono', 'Telefono:') !!}
+        {!! Form::label('telefono', 'Teléfono:') !!}
         <p>{!! $persona->telefono !!}</p>
+    </div>
+    
+    <!-- Telefono Field -->
+    <div class="col-md-4">
+        {!! Form::label('telefono_trabajo', 'Teléfono trabajo:') !!}
+        <p>{!! $persona->telefono_trabajo !!}</p>
     </div>
 
     <!-- Celular Field -->
@@ -49,20 +61,14 @@
 
     <!-- Url Cedula Field -->
     <div class="col-md-4">
-        {!! Form::label('url_cedula', 'Url Cedula:') !!}
+        {!! Form::label('url_cedula', 'Cédula:') !!}
         <p>{!! $persona->url_cedula !!}</p>
     </div>
 
     <!-- Url Carta Laboral Field -->
     <div class="col-md-4">
-        {!! Form::label('url_carta_laboral', 'Url Carta Laboral:') !!}
+        {!! Form::label('url_carta_laboral', 'Carta Laboral:') !!}
         <p>{!! $persona->url_carta_laboral !!}</p>
-    </div>
-
-    <!-- User Id Field -->
-    <div class="col-md-4">
-        {!! Form::label('user_id', 'User Id:') !!}
-        <p>{!! $persona->user_id !!}</p>
     </div>
 
     <!-- Created At Field -->
