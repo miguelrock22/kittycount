@@ -21,7 +21,9 @@ class HistorialRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'total_cobrado',
-        'cuotas',
+        'abono',
+        'deuda_abono',
+        'dia_cobro_abono',
         'observacion',
         'personas_id',
         'users_id',

@@ -38,7 +38,9 @@ class Historial extends Model
 
     public $fillable = [
         'total_cobrado',
-        'cuotas',
+        'abono',
+        'deuda_abono',
+        'dia_cobro_abono',
         'observacion',
         'personas_id',
         'users_id',
@@ -53,7 +55,9 @@ class Historial extends Model
     protected $casts = [
         'id' => 'integer',
         'total_cobrado' => 'float',
-        'cuotas' => 'string',
+        'abono' => 'boolean',
+        'deuda_abono' => 'integer',
+        'dia_cobro_abono' => 'string',
         'observacion' => 'string',
         'personas_id' => 'integer',
         'users_id' => 'integer',

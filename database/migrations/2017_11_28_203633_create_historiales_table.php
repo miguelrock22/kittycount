@@ -16,10 +16,10 @@ class CreateHistorialesTable extends Migration
         Schema::create('historiales', function (Blueprint $table) {
             $table->increments('id');
             $table->double('total_cobrado', 10, 2);
-            $table->boolean('abono');
-            $table->double('deuda_abono', 10, 2);
+            $table->boolean('abono')->default(false);
+            $table->double('deuda_abono', 10, 2)->nulleable();
             $table->date('dia_cobro_abono')->nullable();
-            $table->text('observacion');
+            $table->text('observacion')->nullable();
             $table->unsignedInteger('personas_id')->nullable();
             $table->foreign('personas_id')->references('id')->on('personas');
             $table->unsignedInteger('users_id')->nullable();

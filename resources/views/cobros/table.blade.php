@@ -13,8 +13,13 @@
     <tr>
         <td>{!! $prestamo->persona->nombres !!}</td>
         <td>{!! $prestamo->persona->direccion_casa !!}</td>
-        <td>$ {!! number_format($prestamo->valor_cuota) !!}</td>
-        <td>{!! date('d-m-Y', strtotime($prestamo->dia_cobro)) !!}</td>
+        @if((strtotime($prestamo->dia_cobro) >= strtotime("-2 days")) && (strtotime($prestamo->dia_cobro) <= strtotime("+1 days")))
+            <td>${!! number_format($prestamo->valor_cuota) !!}</td>
+            <td>{!! date('d-m-Y', strtotime($prestamo->dia_cobro)) !!}</td>
+        @else
+            <td>${!! number_format($prestamo->valor_cuota_2) !!}</td>
+            <td>{!! date('d-m-Y', strtotime($prestamo->dia_cobro_2)) !!}</td>
+        @endif
         <td>
             {!! Form::open(['route' => ['cobros.destroy', $prestamo->id], 'method' => 'delete']) !!}
             <div class='btn-group'>
