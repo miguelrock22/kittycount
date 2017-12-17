@@ -31,9 +31,14 @@ class CobrosController extends Controller
      */
     public function index(Request $request)
     {
+        $dateBewtween = [date('Y-m-d',strtotime("-1 days")),date('Y-m-d',strtotime("+1 days"))];
         $this->prestamoRepository->pushCriteria(new RequestCriteria($request));
-        $prestamos = Prestamo::whereBetween('dia_cobro',[date('Y-m-d',strtotime("-1 days")),date('Y-m-d',strtotime("+1 days"))])->with('user')->get();
-
+        $prestamos = Prestamo::where('estado',1)
+            ->whereBetween('dia_cobro',$dateBewtween)
+            ->orWhere(function ($query) {
+                $query->whereBetween('dia_cobro_2', [date('Y-m-d',strtotime("-1 days")),date('Y-m-d',strtotime("+1 days"))]);
+            })
+            ->with('user')->get();
         return view('cobros.index')
             ->with('prestamos', $prestamos);
     }
@@ -57,12 +62,12 @@ class CobrosController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-                
-        if(!isset($input['observacion']))
-                    $input['observacion'] = "";
+
+        $prestamo = $this->prestamoRepository->findWithoutFail($input['prestamos_id']);
+        $prestamo->dia_cobro = $prestamo->dia_cobro->addMonths(1);
+        $prestamo->save();
 
         $historial = $this->historialRepository->create($input);
-       
 
         $prestamo = $this->prestamoRepository->findWithoutFail($input['prestamos_id']);
 
