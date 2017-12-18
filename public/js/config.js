@@ -28,7 +28,8 @@ jQuery(document).ready(function ($) {
         "info":  false,
         "language": {
             "url": "plugins/datatables/Spanish.json"
-        }
+        },
+        "responsive" : true
     });
 
     $('.price-field').priceFormat({

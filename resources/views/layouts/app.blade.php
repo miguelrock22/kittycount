@@ -19,7 +19,7 @@
     <!-- Ionicons -->
     {!!Html::style("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")!!}
 
-    {!!Html::style("https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css")!!}
+    {!!Html::style("https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.16/r-2.2.1/datatables.min.css")!!}
     {!!Html::style("plugins/datepicker/datepicker3.css")!!}
     {!!Html::style("plugins/iCheck/skins/all.css")!!}
     {!!Html::style("plugins/pace/pace.min.css")!!}
@@ -159,8 +159,9 @@
 
     <!-- jQuery 2.1.4 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    {!!Html::script("plugins/alertifyjs/alertify.min.js")!!}
+    {!!Html::script("https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.16/r-2.2.1/datatables.min.js")!!}
     {!!Html::script("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")!!}
+    {!!Html::script("plugins/alertifyjs/alertify.min.js")!!}
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>-->
@@ -169,7 +170,6 @@
     {!!Html::script("https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js")!!}
     {!!Html::script("plugins/slimScroll/jquery.slimscroll.min.js")!!}
 
-    {!!Html::script("https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js")!!}
     {!!Html::script("https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.js")!!}
     {!!Html::script("https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/additional-methods.js")!!}
     {!!Html::script("https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js")!!}
