@@ -43,7 +43,7 @@
             {data:'oficio'},
             {data:'telefono'},
             {data:'celular'},
-            {data:'id', "render":function(data, type, row, meta) {
+            {data:'id',"orderable": false, "render":function(data, type, row, meta) {
 
                 return '<form method="POST" action="'+row.action+'" accept-charset="UTF-8"><input name="_token" type="hidden" value="'+row.token+'"><div class="btn-group">'+
                     '<a href="'+row.show+'" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>'+
