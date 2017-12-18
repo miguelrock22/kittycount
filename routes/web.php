@@ -40,5 +40,6 @@ Route::prefix('admin')->middleware(['auth', 'role:Administrador'])->group(functi
 Route::middleware(['auth', 'role:Cobrador'])->group(function() {
 
 	Route::resource('cobros', 'CobrosController');
+	Route::get('liquidacion', 'CobrosController@liquidacion')->name('liquidacion');
 	
 });;

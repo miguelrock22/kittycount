@@ -10,6 +10,7 @@ use App\Models\Codeudor;
 use App\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,7 +38,8 @@ class AppServiceProvider extends ServiceProvider
                 "Ti@" => "Ti@",
             ];
 
-            $personas = Persona::pluck('cedula', 'id');
+            $personas = Persona::where('user_id',Auth::id())
+                ->pluck('cedula', 'id');
             View::share('parentesco', $parentesco);
             View::share('personas', $personas);
         });

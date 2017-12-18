@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Repositories\PrestamoRepository;
 use App\Repositories\HistorialRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
+use Illuminate\Support\Facades\Auth;
 
 class CobrosController extends Controller
 {
@@ -35,11 +36,11 @@ class CobrosController extends Controller
         $dateBewtween = [date('Y-m-d',strtotime("-1 days")),date('Y-m-d',strtotime("+1 days"))];
         $this->prestamoRepository->pushCriteria(new RequestCriteria($request));
         $prestamos = Prestamo::where('estado',1)
+            ->where('users_id',Auth::id())
             ->whereBetween('dia_cobro',$dateBewtween)
             ->orWhere(function ($query) {
                 $query->whereBetween('dia_cobro_2', [date('Y-m-d',strtotime("-1 days")),date('Y-m-d',strtotime("+1 days"))]);
-            })
-            ->with('user')->get();
+            })->get();
         $abonos = Historial::where('abono',1)
             ->whereBetween('dia_cobro_abono',$dateBewtween)->get();
         return view('cobros.index')
@@ -54,6 +55,11 @@ class CobrosController extends Controller
     public function create()
     {
         //
+    }
+
+    public function liquidacion(){
+        $historial = Historial::where('users_id',Auth::id())->get();
+        return view('cobros.liquidacion')->with('historial', $historial);
     }
 
     /**
