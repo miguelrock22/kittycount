@@ -25,13 +25,13 @@
 <!-- Total Cobrado Field -->
 <div class="col-md-4">
     {!! Form::label('total_cobrado', 'Total Cobrado:') !!}
-    <p>{!! ${!! number_format($historial->total_cobrado) !!}</p>
+    <p>${!! number_format($historial->total_cobrado) !!}</p>
 </div>
 
 <!-- deuda abono Field -->
 <div class="col-md-4">
     {!! Form::label('deuda_abono', 'Deuda abono:') !!}
-    <p>{!! ${!! number_format($historial->deuda_abono) !!}</p>
+    <p>${!! number_format($historial->deuda_abono) !!}</p>
 </div>
 
 <!-- Dia Cobro abono Field -->

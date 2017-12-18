@@ -29,5 +29,27 @@
         </td>
     </tr>
 @endforeach
+<tr>
+<td>Abonos</td>
+<td>--</td>
+<td>--</td>
+<td>--</td>
+<td>--</td>
+@foreach($abonos as $abono)
+    <tr>
+        <td>{!! $abono->persona->nombres !!}</td>
+        <td>{!! $abono->persona->direccion_casa !!}</td>
+        <td>${!! number_format($abono->deuda_abono) !!}</td>
+        <td>{!! date('d-m-Y', strtotime($abono->dia_cobro_abono)) !!}</td>
+        <td>
+            {!! Form::open(['route' => ['cobros.destroy', $abono->prestamos_id], 'method' => 'delete']) !!}
+            <div class='btn-group'>
+                <a href="{!! route('cobros.edit', [$abono->prestamos_id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+            </div>
+            {!! Form::close() !!}
+        </td>
+    </tr>
+@endforeach
+</tr>
 </tbody>
 </table>

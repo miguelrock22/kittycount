@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Flash;
 use App\Models\Prestamo;
+use App\Models\Historial;
 use Illuminate\Http\Request;
 use App\Repositories\PrestamoRepository;
 use App\Repositories\HistorialRepository;
@@ -39,8 +40,10 @@ class CobrosController extends Controller
                 $query->whereBetween('dia_cobro_2', [date('Y-m-d',strtotime("-1 days")),date('Y-m-d',strtotime("+1 days"))]);
             })
             ->with('user')->get();
+        $abonos = Historial::where('abono',1)
+            ->whereBetween('dia_cobro_abono',$dateBewtween)->get();
         return view('cobros.index')
-            ->with('prestamos', $prestamos);
+            ->with(['prestamos'=> $prestamos,'abonos'=>$abonos]);
     }
 
     /**
@@ -67,7 +70,18 @@ class CobrosController extends Controller
         $prestamo->dia_cobro = $prestamo->dia_cobro->addMonths(1);
         $prestamo->save();
 
+        if(isset($input['abono']))
+            $input['deuda_abono'] = $prestamo->valor_cuota - $input['total_cobrado'];
+        else
+            $input['deuda_abono'] = 0;
+
+            
         $historial = $this->historialRepository->create($input);
+        if(isset($input['historial_id'])){
+            $his = $this->historialRepository->findWithoutFail($input['historial_id']);
+            $his->dia_cobro_abono = null;
+            $his->save();
+        }
 
         $prestamo = $this->prestamoRepository->findWithoutFail($input['prestamos_id']);
 
@@ -96,6 +110,12 @@ class CobrosController extends Controller
     public function edit($id)
     {
         $prestamo = $this->prestamoRepository->findWithoutFail($id);
+        $historial = Historial::where('prestamos_id',$id)->get();
+        $his_id = null;
+        foreach($historial as $h){
+            $prestamo->valor_cuota -= $h->total_cobrado;
+            $his_id = $h->id; 
+        }
 
         if (empty($prestamo)) {
             Flash::error('Prestamo not found');
@@ -103,7 +123,7 @@ class CobrosController extends Controller
             return redirect(route('cobros.index'));
         }
 
-        return view('cobros.edit')->with('prestamo', $prestamo);
+        return view('cobros.edit')->with(['prestamo'=> $prestamo,'historial_id'=>$his_id]);
 
     }
 

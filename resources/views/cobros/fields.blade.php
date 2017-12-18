@@ -4,6 +4,8 @@
 {!! Form::hidden('cuota',1) !!}
 @endif
 
+{!! Form::hidden('historial_id',$historial_id) !!}
+
 <!-- Personas Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('personas_id', 'Cliente:') !!}
