@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateHistorialRequest;
 use App\Repositories\HistorialRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Historial;
+use App\Models\Prestamo;
 use Illuminate\Http\Request;
 use Flash,DataTables;
 use Carbon\Carbon;
@@ -70,6 +71,16 @@ class HistorialController extends AppBaseController
     {
         $input = $request->all();
 
+        $prestamos = Prestamo::where('personas_id', $input['personas_id'])->first();
+        $input['prestamos_id'] = $prestamos->id;
+        $prestamos->dia_cobro = $prestamos->dia_cobro->addMonths(1);
+        $prestamos->save();
+
+        if(isset($input['abono']))
+            $input['deuda_abono'] = $prestamos->valor_cuota - $input['total_cobrado'];
+        else
+            $input['deuda_abono'] = 0;
+        
         $historial = $this->historialRepository->create($input);
 
         Flash::success('Historial saved successfully.');

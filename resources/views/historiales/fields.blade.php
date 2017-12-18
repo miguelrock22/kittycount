@@ -16,10 +16,17 @@
     {!! Form::text('total_cobrado', null, ['class' => 'form-control price-field']) !!}
 </div>
 
-<!-- Cuotas Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('cuotas', 'Cuotas:') !!}
-    {!! Form::text('cuotas', null, ['class' => 'form-control']) !!}
+    {!! Form::label('abono', 'Abono:') !!}
+    <label class="checkbox-inline">
+        {!! Form::checkbox('abono') !!}
+    </label>
+</div>
+
+<!-- Dia Cobro Field -->
+<div class="form-group col-sm-6 dia-cobro hidden">
+    {!! Form::label('dia_cobro_abono', 'Día de cobro') !!}
+    {!! Form::date('dia_cobro_abono', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Observacion Field -->
@@ -28,14 +35,23 @@
     {!! Form::textarea('observacion', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Prestamos Id Field -->
-    <div class="form-group col-sm-6">
-    {!! Form::label('prestamos_id', 'Identificador Prestamos:') !!}
-    {!! Form::number('prestamos_id', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('historiales.index') !!}" class="btn btn-default">Cancelar</a>
 </div>
+@section('scripts')
+<script>
+$('document').ready(function(){
+    $("#abono").change(function(){
+        if($(this).prop('checked') === false)
+            $(".dia-cobro").addClass("hidden");
+        else
+            $(".dia-cobro").removeClass("hidden");
+    });
+    $('form').submit(function(){
+        $("#total_cobrado").val($("#total_cobrado").unmask());
+    });
+});
+</script>
+@endsection
