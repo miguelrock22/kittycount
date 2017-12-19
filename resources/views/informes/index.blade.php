@@ -68,8 +68,12 @@
                     return intVal(a) + intVal(b);
                 }, 0 );
  
-            var sumRow = $('<tr/>').attr('role','row').addClass("success").html('<td>Total:</td><td>'+total+'</td><td>'+pageTotal+'</td><td></td>')
+            var sumRow = $('<tr/>').attr('role','row').addClass("success").html('<td>Total:</td><td class="price-field">'+total+'</td><td class="price-field">'+pageTotal+'</td><td></td>')
             $("#informes-table tbody").append(sumRow);
+            $('.price-field').priceFormat({
+                centsLimit: 0,
+                prefix: '$'
+            });
         }
     });
 </script>
