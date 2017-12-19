@@ -108,6 +108,6 @@ class Prestamo extends Model
      **/
     public function historiales()
     {
-        return $this->hasMany(\App\Models\Historial::class);
+        return $this->hasMany(\App\Models\Historial::class, 'prestamos_id');
     }
 }

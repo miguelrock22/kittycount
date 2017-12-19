@@ -34,7 +34,10 @@ Route::prefix('admin')->middleware(['auth', 'role:Administrador'])->group(functi
 	Route::get('datatable/prestamos', 'PrestamoController@datatable')->name('datatablepre');
 
 	Route::resource('historiales', 'HistorialController');
-    Route::get('datatable/historiales', 'HistorialController@datatable')->name('datatablehis');
+	Route::get('datatable/historiales', 'HistorialController@datatable')->name('datatablehis');
+	
+	Route::get('informes','InformesController@index')->name('informes.index');
+	Route::get('datatable/informes','InformesController@datatable')->name('datatableinf');
 });
 
 Route::middleware(['auth', 'role:Cobrador'])->group(function() {

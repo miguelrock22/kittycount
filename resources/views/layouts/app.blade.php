@@ -19,7 +19,7 @@
     <!-- Ionicons -->
     {!!Html::style("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")!!}
 
-    {!!Html::style("https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.16/r-2.2.1/datatables.min.css")!!}
+    {!!Html::style("https://cdn.datatables.net/v/bs/jqc-1.12.3/jszip-2.5.0/dt-1.10.16/b-1.5.0/b-html5-1.5.0/datatables.min.css")!!}
     {!!Html::style("plugins/datepicker/datepicker3.css")!!}
     {!!Html::style("plugins/iCheck/skins/all.css")!!}
     {!!Html::style("plugins/pace/pace.min.css")!!}
@@ -159,7 +159,7 @@
 
     <!-- jQuery 2.1.4 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    {!!Html::script("https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.16/r-2.2.1/datatables.min.js")!!}
+    {!!Html::script("https://cdn.datatables.net/v/bs/jqc-1.12.3/jszip-2.5.0/dt-1.10.16/b-1.5.0/b-html5-1.5.0/datatables.min.js")!!}
     {!!Html::script("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")!!}
     {!!Html::script("plugins/alertifyjs/alertify.min.js")!!}
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
