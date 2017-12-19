@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
+use Flash, Carbon\Carbon;
 use App\Models\Prestamo;
 use App\Models\Historial;
 use Illuminate\Http\Request;
@@ -58,7 +58,8 @@ class CobrosController extends Controller
     }
 
     public function liquidacion(){
-        $historial = Historial::where('users_id',Auth::id())->get();
+        //dd(Carbon::now()->format('Y-m-d'));
+        $historial = Historial::where('users_id',Auth::id())->whereDate('created_at',Carbon::now()->format('Y-m-d'))->get();
         return view('cobros.liquidacion')->with('historial', $historial);
     }
 
