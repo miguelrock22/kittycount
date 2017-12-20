@@ -27,7 +27,7 @@ class PersonaController extends AppBaseController
     }
 
     public function datatable(Request $request) {    
-        $personas = Persona::with('user')->get();
+        $personas = Persona::with('user')->where('user_id',Auth::id())->get();
         $personas->each(function($persona) {
             $persona->token = csrf_token();
             $persona->edit = route("personas.edit", [$persona->id]);

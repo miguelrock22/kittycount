@@ -13,6 +13,7 @@ use Flash,DataTables;
 use Carbon\Carbon;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Illuminate\Support\Facades\Auth;
 
 class HistorialController extends AppBaseController
 {
@@ -38,7 +39,10 @@ class HistorialController extends AppBaseController
     }
     
     public function datatable(Request $request) {    
-        $historiales = Historial::with(['persona','user'])->get();
+        $u_id = Auth::id();
+        $historiales = Historial::with(['persona','user'])->whereHas('persona', function($query) use ($u_id){
+            $query->where('user_id',$u_id);
+        })->get();
         $historiales->each(function($historial) {
             $historial->action = route("historiales.destroy", [$historial->id]);
             $historial->token = csrf_token();

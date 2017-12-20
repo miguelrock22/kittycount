@@ -8,6 +8,7 @@ use App\Repositories\PrestamoRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Prestamo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Flash, DataTables;
 use Carbon\Carbon;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -35,8 +36,11 @@ class PrestamoController extends AppBaseController
         return view('prestamos.index');
     }
 
-    public function datatable(Request $request) {    
-        $prestamos = Prestamo::with(['persona','user'])->get();
+    public function datatable(Request $request) {
+        $u_id = Auth::id();
+        $prestamos = Prestamo::with(['user','persona' => function($query) use ($u_id){
+            $query->where('user_id', $u_id);
+        }])->get();
         $prestamos->each(function($prestamo) {
             $prestamo->action = route("prestamos.destroy", [$prestamo->id]);
             $prestamo->token = csrf_token();

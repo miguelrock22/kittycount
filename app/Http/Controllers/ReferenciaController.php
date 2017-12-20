@@ -11,6 +11,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateReferenciaRequest;
 use App\Http\Requests\UpdateReferenciaRequest;
 use Prettus\Repository\Criteria\RequestCriteria;
+use Illuminate\Support\Facades\Auth;
 
 class ReferenciaController extends AppBaseController
 {
@@ -46,8 +47,10 @@ class ReferenciaController extends AppBaseController
     }
 
     public function datatable(Request $request) {
-
-        $referencias = Referencia::with(['persona','codeudor'])->get();
+        $u_id = Auth::id();
+        $referencias = Referencia::with(['persona','codeudor'])->whereHas('persona', function($query) use ($u_id){
+            $query->where('user_id',$u_id);
+        })->get();
         $referencias->each(function($referencia) {
             $referencia->action = route("referencias.destroy", [$referencia->id]);
             $referencia->token = csrf_token();

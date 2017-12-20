@@ -6,6 +6,7 @@ use Flash,DataTables;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class InformesController extends Controller
 {
@@ -20,6 +21,7 @@ class InformesController extends Controller
             ->join('historiales','prestamos.id','=','historiales.prestamos_id')
             ->join('personas','personas.id','=','prestamos.personas_id')
             ->selectRaw('personas.nombres,prestamos.prestamo,sum(historiales.total_cobrado) as intereses,prestamos.created_at as dia_solicitado')
+            ->where('personas.user_id',Auth::id())
             ->where('prestamos.estado',1)
             ->groupby('prestamos.id')->get();
         return DataTables::collection($reporte)->editColumn('dia_solicitado', function ($reporte) {

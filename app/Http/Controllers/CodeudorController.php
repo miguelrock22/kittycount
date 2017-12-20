@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Flash, DataTables;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Illuminate\Support\Facades\Auth;
 
 class CodeudorController extends AppBaseController
 {
@@ -37,8 +38,11 @@ class CodeudorController extends AppBaseController
         return view('codeudores.index');
     }
 
-    public function datatable(Request $request) {    
-        $codeudores = Codeudor::with('persona')->get();
+    public function datatable(Request $request) {
+        $u_id = Auth::id();
+        $codeudores = Codeudor::with(['persona'])->whereHas('persona', function($query) use ($u_id){
+            $query->where('user_id',$u_id);
+        })->get();
         $codeudores->each(function($codeudor) {
             $codeudor->action = route("codeudores.destroy", [$codeudor->id]);
             $codeudor->token = csrf_token();
