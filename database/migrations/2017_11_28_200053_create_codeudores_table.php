@@ -26,6 +26,8 @@ class CreateCodeudoresTable extends Migration
             $table->string('url_carta_laboral', 100)->nullable();
             $table->unsignedInteger('personas_id');
             $table->foreign('personas_id')->references('id')->on('personas');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();
         });

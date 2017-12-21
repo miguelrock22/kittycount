@@ -82,7 +82,7 @@
         <!-- Dirección Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('direccion_casa_pers_1', '1. Dirección:') !!}
-            {!! Form::text('direccion_casa_pers_1', null, ['class' => 'form-control']) !!}
+            {!! Form::text('direccion_casa_pers_1', null, ['class' => 'form-control', 'required' => true]) !!}
         </div>
 
         <!-- Dirección trabajo Field -->
@@ -94,7 +94,7 @@
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('telefono_pers_1', '1. Teléfono:') !!}
-            {!! Form::text('telefono_pers_1', null, ['class' => 'form-control']) !!}
+            {!! Form::text('telefono_pers_1', null, ['class' => 'form-control', 'required' => true]) !!}
         </div>
 
         <!-- Telefonos Field -->
@@ -122,7 +122,7 @@
         <!-- Dirección Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('direccion_casa_pers_2', '2. Dirección:') !!}
-            {!! Form::text('direccion_casa_pers_2', null, ['class' => 'form-control']) !!}
+            {!! Form::text('direccion_casa_pers_2', null, ['class' => 'form-control', 'required' => true]) !!}
         </div>
 
         <!-- Dirección trabajo Field -->
@@ -134,7 +134,7 @@
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('telefono_pers_2', '2. Teléfono:') !!}
-            {!! Form::text('telefono_pers_2', null, ['class' => 'form-control']) !!}
+            {!! Form::text('telefono_pers_2', null, ['class' => 'form-control', 'required' => true]) !!}
         </div>
 
         <!-- Telefonos Field -->

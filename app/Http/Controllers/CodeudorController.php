@@ -72,6 +72,7 @@ class CodeudorController extends AppBaseController
     public function store(CreateCodeudorRequest $request)
     {
         $input = $request->all();
+        $input['user_id'] = Auth::id();
         if ($request->hasFile('url_cedula')) {
             $input['url_cedula'] = $request->url_cedula->store('images', 'public');
         }

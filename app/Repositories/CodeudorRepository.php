@@ -29,7 +29,8 @@ class CodeudorRepository extends BaseRepository
         'celular',
         'personas_id',
         'url_cedula',
-        'url_carta_laboral'
+        'url_carta_laboral',
+        'user_id'
     ];
 
     /**

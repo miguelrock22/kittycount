@@ -15,14 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->insert([
-            'name' => 'Adminsis',
-            'email' => 'adminsis1@test.com',
+            'name' => 'Nancy',
+            'email' => 'nancy@test.com',
             'created_at' => date('Y-m-d'),
             'password' => bcrypt('123456a'),
         ]);
         DB::table('users')->insert([
-            'name' => 'Negro',
-            'email' => 'movil1@test.com',
+            'name' => 'Andres',
+            'email' => 'andres@test.com',
             'created_at' => date('Y-m-d'),
             'password' => bcrypt('123456a'),
         ]);
@@ -32,13 +32,21 @@ class DatabaseSeeder extends Seeder
             'created_at' => date('Y-m-d'),
             'password' => bcrypt('123456a'),
         ]);
+        DB::table('users')->insert([
+            'name' => 'Chango',
+            'email' => 'chango@test.com',
+            'created_at' => date('Y-m-d'),
+            'password' => bcrypt('123456a'),
+        ]);
         Role::create(['name' => 'Administrador']);
         Role::create(['name' => 'Cobrador']);
         $user = App\User::find(1);
         $user->assignRole('Administrador');
         $user = App\User::find(2);
-        $user->assignRole('Cobrador');
+        $user->assignRole('Administrador');
         $user = App\User::find(3);
+        $user->assignRole('Cobrador');
+        $user = App\User::find(4);
         $user->assignRole('Cobrador');
         
     }

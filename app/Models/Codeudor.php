@@ -46,7 +46,8 @@ class Codeudor extends Model
         'celular',
         'personas_id',
         'url_cedula',
-        'url_carta_laboral'
+        'url_carta_laboral',
+        'user_id'
     ];
 
     /**
@@ -63,7 +64,8 @@ class Codeudor extends Model
         'oficio' => 'string',
         'telefono' => 'string',
         'celular' => 'string',
-        'personas_id' => 'integer'
+        'personas_id' => 'integer',
+        'user_id' => 'integer'
     ];
 
     /**
@@ -89,5 +91,13 @@ class Codeudor extends Model
     public function referencias()
     {
         return $this->hasMany(\App\Models\Referencia::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class);
     }
 }

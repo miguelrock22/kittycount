@@ -48,7 +48,9 @@ class ReferenciaController extends AppBaseController
 
     public function datatable(Request $request) {
         $u_id = Auth::id();
-        $referencias = Referencia::with(['persona','codeudor'])->whereHas('persona', function($query) use ($u_id){
+        $referencias = Referencia::with(['persona','codeudor'])->whereHas('persona',function($query) use ($u_id){
+            $query->where('user_id',$u_id);
+        })->orWhereHas('codeudor',function($query) use ($u_id){
             $query->where('user_id',$u_id);
         })->get();
         $referencias->each(function($referencia) {
