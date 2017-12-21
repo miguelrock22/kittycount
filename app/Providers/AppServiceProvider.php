@@ -45,11 +45,11 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer(['prestamos.create', 'prestamos.edit','historiales.create','historiales.edit'], function ($view) {
-            $movil = User::role('Cobrador')->pluck('name','id');
+            $movil = User::role('Cobrador')->where('user_id',Auth::id())->pluck('name','id');
             View::share('movil', $movil);
         });
         View::composer(['referencias.create', 'referencias.edit'], function ($view) {
-            $codeudor = Codeudor::pluck('cedula', 'id');
+            $codeudor = Codeudor::where('user_id',Auth::id())->pluck('cedula', 'id');
             View::share('codeudor', $codeudor);
         });
 

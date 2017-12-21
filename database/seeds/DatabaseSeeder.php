@@ -38,6 +38,12 @@ class DatabaseSeeder extends Seeder
             'created_at' => date('Y-m-d'),
             'password' => bcrypt('123456a'),
         ]);
+        DB::table('users')->insert([
+            'name' => 'Negro',
+            'email' => 'negro@test.com',
+            'created_at' => date('Y-m-d'),
+            'password' => bcrypt('123456a'),
+        ]);
         Role::create(['name' => 'Administrador']);
         Role::create(['name' => 'Cobrador']);
         $user = App\User::find(1);
@@ -47,6 +53,8 @@ class DatabaseSeeder extends Seeder
         $user = App\User::find(3);
         $user->assignRole('Cobrador');
         $user = App\User::find(4);
+        $user->assignRole('Cobrador');
+        $user = App\User::find(5);
         $user->assignRole('Cobrador');
         
     }
