@@ -40,7 +40,8 @@ class PrestamoController extends AppBaseController
         $u_id = Auth::id();
         $prestamos = Prestamo::with(['user','persona' => function($query) use ($u_id){
             $query->where('user_id', $u_id);
-        }])->get();
+        }])
+        ->where('estado',1)->get();
         $prestamos->each(function($prestamo) {
             $prestamo->action = route("prestamos.destroy", [$prestamo->id]);
             $prestamo->token = csrf_token();
@@ -168,6 +169,8 @@ class PrestamoController extends AppBaseController
                 $input['valor_cuota'] = $cuota;
                 $input['valor_cuota_2'] = $cuota;
             }
+            if($input['abono_capital'] == $prestamo->prestamo)
+                $input['estado'] = 0;
         }
 
         $prestamo = $this->prestamoRepository->update($input, $id);
