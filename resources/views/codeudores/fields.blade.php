@@ -2,7 +2,7 @@
 <!-- Personas Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('personas_id', 'Cedula Cliente:') !!}
-    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2', 'placeholder'=>'Seleccione']) !!}
+    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2', 'placeholder'=>'Seleccione','required' => true]) !!}
 </div>
 
 <!-- Cedula Field -->
@@ -77,7 +77,7 @@
         <!-- Dirección Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('direccion_casa_pers_1', '1. Dirección:') !!}
-            {!! Form::text('direccion_casa_pers_1', null, ['class' => 'form-control', 'required' => true]) !!}
+            {!! Form::text('direccion_casa_pers_1', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Dirección trabajo Field -->
@@ -89,7 +89,7 @@
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('telefono_pers_1', '1. Teléfono:') !!}
-            {!! Form::text('telefono_pers_1', null, ['class' => 'form-control', 'required' => true]) !!}
+            {!! Form::text('telefono_pers_1', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
@@ -117,7 +117,7 @@
         <!-- Dirección Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('direccion_casa_pers_2', '2. Dirección:') !!}
-            {!! Form::text('direccion_casa_pers_2', null, ['class' => 'form-control', 'required' => true]) !!}
+            {!! Form::text('direccion_casa_pers_2', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Dirección trabajo Field -->
@@ -129,7 +129,7 @@
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('telefono_pers_2', '2. Teléfono:') !!}
-            {!! Form::text('telefono_pers_2', null, ['class' => 'form-control', 'required' => true]) !!}
+            {!! Form::text('telefono_pers_2', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->

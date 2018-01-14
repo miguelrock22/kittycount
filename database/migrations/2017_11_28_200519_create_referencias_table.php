@@ -16,12 +16,12 @@ class CreateReferenciasTable extends Migration
         Schema::create('referencias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombres', 100);
-            $table->string('direccion_casa', 100);
+            $table->string('direccion_casa', 100)->nullable();
             $table->string('direccion_trabajo', 100)->nullable();
-            $table->string('telefono', 20);
+            $table->string('telefono', 20)->nullable();
             $table->string('telefono_trabajo', 20)->nullable();
             $table->string('celular', 20)->nullable();
-            $table->string('parentesco', 100);
+            $table->string('parentesco', 100)->nullable();
             $table->unsignedInteger('personas_id')->nullable();
             $table->foreign('personas_id')->references('id')->on('personas');
             $table->unsignedInteger('codeudores_id')->nullable();
