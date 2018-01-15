@@ -2,19 +2,19 @@
 <!-- Personas Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('personas_id', 'Cedula Cliente:') !!}
-    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2','placeholder'=>'Seleccione']) !!}
+    {!! Form::select('personas_id', $personas, null, ['class' => 'form-control select2','placeholder'=>'Seleccione','required' => true]) !!}
 </div>
 
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('users_id', 'Cobrador:') !!}
-    {!! Form::select('users_id', $movil, null, ['class' => 'form-control select2','placeholder'=>'Seleccione']) !!}
+    {!! Form::select('users_id', $movil, null, ['class' => 'form-control select2','placeholder'=>'Seleccione','required' => true]) !!}
 </div>
 
 <!-- Prestamo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('prestamo_val', 'Valor a prestar:') !!}
-    {!! Form::text('prestamo_val', (isset($prestamo) ? $prestamo->prestamo : 0 ), ['class' => 'form-control price-field']) !!}
+    {!! Form::text('prestamo_val', (isset($prestamo) ? $prestamo->prestamo : 0 ), ['class' => 'form-control price-field','required' => true]) !!}
 </div>
 {!! Form::hidden('prestamo',null,['id' => 'prestamo']) !!}
 
@@ -27,7 +27,7 @@
 <!-- Dia Cobro Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dia_cobro', 'Día Cobro:') !!}
-    {!! Form::date('dia_cobro', (isset($prestamo) ? date('Y-m-d',strtotime($prestamo->dia_cobro)) : 0 ), ['class' => 'form-control']) !!}
+    {!! Form::date('dia_cobro', (isset($prestamo) ? date('Y-m-d',strtotime($prestamo->dia_cobro)) : 0 ), ['class' => 'form-control','required' => true]) !!}
 </div>
 
 <!-- Dia Cobro 2 Field -->
