@@ -69,178 +69,104 @@
 <!-- Referencias Section -->
 <div class="col-md-12">
     <h3>Referencias personales</h3>
+    <a class="btn btn-default pull-right add-ref-pers">Agregar</a>
 </div>
 
-<div class="form-group col-sm-12">
-    <div class="row">
+<div class="form-group col-sm-12 personales">
+    <div class="row ref-pers hidden">
+        <div class="form-group">
+            <h4 class="countref"></h4>
+            <a class="btn btn-danger text-right" onclick="$(this).parent().parent().remove()"><i class="fa fa-times"></i></a>
+        </div>
         <!-- Nombres Field -->
         <div class="form-group col-sm-4">
-        <sup>*</sup> {!! Form::label('nombres_pers_1', '1. Nombres:') !!}
-            {!! Form::text('nombres_pers_1', null, ['class' => 'form-control', 'required' => true]) !!}
+        <sup>*</sup> {!! Form::label('nombres_pers', 'Nombres:') !!}
+            {!! Form::text('nombres_pers', null, ['class' => 'form-control', 'required' => true]) !!}
         </div>
 
         <!-- Dirección Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('direccion_casa_pers_1', '1. Dirección:') !!}
-            {!! Form::text('direccion_casa_pers_1', null, ['class' => 'form-control']) !!}
+            {!! Form::label('direccion_casa_pers', 'Dirección:') !!}
+            {!! Form::text('direccion_casa_pers', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Dirección trabajo Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('direccion_trabajo_pers_1', '1. Dirección trabajo:') !!}
-            {!! Form::text('direccion_trabajo_pers_1', null, ['class' => 'form-control']) !!}
+            {!! Form::label('direccion_trabajo_pers', 'Dirección trabajo:') !!}
+            {!! Form::text('direccion_trabajo_pers', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('telefono_pers_1', '1. Teléfono:') !!}
-            {!! Form::text('telefono_pers_1', null, ['class' => 'form-control']) !!}
+            {!! Form::label('telefono_pers', 'Teléfono:') !!}
+            {!! Form::text('telefono_pers', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('telefono_trabajo_pers_1', '1. Teléfono trabajo:') !!}
-            {!! Form::text('telefono_trabajo_pers_1', null, ['class' => 'form-control']) !!}
+            {!! Form::label('telefono_trabajo_pers', 'Teléfono trabajo:') !!}
+            {!! Form::text('telefono_trabajo_pers', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('celular_pers_1', '1. Celular:') !!}
-            {!! Form::text('celular_pers_1', null, ['class' => 'form-control']) !!}
+            {!! Form::label('celular_pers', 'Celular:') !!}
+            {!! Form::text('celular_pers', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Parentesco Field -->
-        {!! Form::hidden('parentesco_pers_1', "Amig@", ['class' => 'form-control']) !!}
+        {!! Form::hidden('parentesco_pers', "Amig@", ['class' => 'form-control']) !!}
     </div>
-    <div class="row">
-        <!-- Nombres Field -->
-        <div class="form-group col-sm-4">
-        <sup>*</sup> {!! Form::label('nombres_pers_2', '2. Nombres:') !!}
-            {!! Form::text('nombres_pers_2', null, ['class' => 'form-control', 'required' => true]) !!}
-        </div>
-
-        <!-- Dirección Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('direccion_casa_pers_2', '2. Dirección:') !!}
-            {!! Form::text('direccion_casa_pers_2', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Dirección trabajo Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('direccion_trabajo_pers_2', '2. Dirección trabajo:') !!}
-            {!! Form::text('direccion_trabajo_pers_2', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Telefonos Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('telefono_pers_2', '2. Teléfono:') !!}
-            {!! Form::text('telefono_pers_2', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Telefonos Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('telefono_trabajo_pers_2', '2. Teléfono trabajo:') !!}
-            {!! Form::text('telefono_trabajo_pers_2', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Telefonos Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('celular_pers_2', '2. Celular:') !!}
-            {!! Form::text('celular_pers_2', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Parentesco Field -->
-        {!! Form::hidden('parentesco_pers_2', "Amig@", ['class' => 'form-control']) !!}
-    </div>
-
 </div>
 <div class="col-md-12">
     <h3>Referencias familiares</h3>
+    <a class="btn btn-default pull-right add-ref-fam">Agregar</a>
 </div>
-<div class="form-group col-sm-12">
-    <div class="row">
+<div class="form-group col-sm-12 familiares">
+    <div class="row hidden ref-fam">
+        <div class="form-group">
+            <h4 class="countref"></h4>
+            <a class="btn btn-danger text-right" onclick="$(this).parent().parent().remove()"><i class="fa fa-times"></i></a>
+        </div>
         <!-- Nombres Field -->
         <div class="form-group col-sm-4">
-        <sup>*</sup> {!! Form::label('nombres_fam_1', '1. Nombres:') !!}
-            {!! Form::text('nombres_fam_1', null, ['class' => 'form-control', 'required' => true]) !!}
-        </div>
-
-        <!-- Dirección Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('direccion_casa_fam_1', '1. Dirección:') !!}
-            {!! Form::text('direccion_casa_fam_1', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Dirección trabajo Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('direccion_trabajo_fam_1', '1. Dirección trabajo:') !!}
-            {!! Form::text('direccion_trabajo_fam_1', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Telefonos Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('telefono_fam_1', '1. Teléfono:') !!}
-            {!! Form::text('telefono_fam_1', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Telefonos Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('telefono_trabajo_fam_1', '1. Teléfono trabajo:') !!}
-            {!! Form::text('telefono_trabajo_fam_1', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Telefonos Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('celular_fam_1', '1. Celular:') !!}
-            {!! Form::text('celular_fam_1', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <!-- Parentesco Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::label('parentesco_fam_1', '1. Parentesco:') !!}
-            {!! Form::select('parentesco_fam_1', $parentesco, null, ['class' => 'form-control']) !!}
-        </div>
-    </div>
-    <div class="row">
-        <!-- Nombres Field -->
-        <div class="form-group col-sm-4">
-        <sup>*</sup> {!! Form::label('nombres_fam_2', '2. Nombres:') !!}
+        <sup>*</sup> {!! Form::label('nombres_fam_2', 'Nombres:') !!}
             {!! Form::text('nombres_fam_2', null, ['class' => 'form-control', 'required' => true]) !!}
         </div>
 
         <!-- Dirección Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('direccion_casa_fam_2', '2. Dirección:') !!}
+            {!! Form::label('direccion_casa_fam_2', 'Dirección:') !!}
             {!! Form::text('direccion_casa_fam_2', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Dirección trabajo Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('direccion_trabajo_fam_2', '2. Dirección trabajo:') !!}
+            {!! Form::label('direccion_trabajo_fam_2', 'Dirección trabajo:') !!}
             {!! Form::text('direccion_trabajo_fam_2', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('telefono_fam_2', '2. Teléfono:') !!}
+            {!! Form::label('telefono_fam_2', 'Teléfono:') !!}
             {!! Form::text('telefono_fam_2', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('telefono_trabajo_fam_2', '2. Teléfono trabajo:') !!}
+            {!! Form::label('telefono_trabajo_fam_2', 'Teléfono trabajo:') !!}
             {!! Form::text('telefono_trabajo_fam_2', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('celular_fam_2', '2. Celular:') !!}
+            {!! Form::label('celular_fam_2', 'Celular:') !!}
             {!! Form::text('celular_fam_2', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Parentesco Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('parentesco_fam_2', '2. Parentesco:') !!}
+            {!! Form::label('parentesco_fam_2', 'Parentesco:') !!}
             {!! Form::select('parentesco_fam_2', $parentesco, null, ['class' => 'form-control']) !!}
         </div>
     </div>
@@ -253,3 +179,30 @@
     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('referencias.index') !!}" class="btn btn-default">Cancelar</a>
 </div>
+
+@section('scripts')
+<script>
+    $('document').ready(function(){
+        $('.add-ref-pers').click(function(){
+            var row = $(".ref-pers").clone();
+            row.removeClass('hidden ref-pers').addClass('cloned');
+            row.find('.countref').text(($('.cloned').length + 1));
+            row.find('input').each(function(e, i){
+                var name = $(i).attr('id');
+                $(i).attr('id',name+"_"+(e+1)).attr('name',name+"_"+(e+1));
+            });
+            $('.personales').append(row);
+        });
+        $('.add-ref-fam').click(function(){
+            var row = $(".ref-fam").clone();
+            row.removeClass('hidden ref-fam').addClass('cloned');
+            row.find('.countref').text(($('.cloned').length + 1));
+            row.find('input').each(function(e, i){
+                var name = $(i).attr('id');
+                $(i).attr('id',name+"_"+(e+1)).attr('name',name+"_"+(e+1));
+            });
+            $('.familiares').append(row);
+        });
+    });
+</script>
+@endsection
