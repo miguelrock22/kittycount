@@ -38,6 +38,9 @@ Route::prefix('admin')->middleware(['auth', 'role:Administrador'])->group(functi
 	
 	Route::get('informes','InformesController@index')->name('informes.index');
 	Route::get('datatable/informes','InformesController@datatable')->name('datatableinf');
+	
+	Route::resource('usuarios','UserController');
+	Route::get('datatable/usuarios','UserController@datatable')->name('datatableus');
 });
 
 Route::middleware(['auth', 'role:Cobrador'])->group(function() {

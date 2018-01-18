@@ -22,3 +22,7 @@
     <a href="{!! route('informes.index') !!}"><i class="fa fa-line-chart" aria-hidden="true"></i><span>Informes</span></a>
 </li>
 
+<li class="{{ Request::is('admin/user*') ? 'active' : '' }}">
+    <a href="{!! route('usuarios.index') !!}"><i class="fa fa-user-circle-o" aria-hidden="true"></i><span>Usuarios</span></a>
+</li>
+
