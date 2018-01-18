@@ -83,7 +83,8 @@ class CodeudorController extends AppBaseController
 
         $codeudor = $this->codeudorRepository->create($input);
         if($codeudor){
-            for($i = 1; $i < 3; $i++){
+            $i = 1;
+            while(isset($input['nombres_pers_'.$i])){
                 $this->referenciaRepository->create(array(
                     'nombres' => $input['nombres_pers_'.$i],
                     'direccion_casa' => $input['direccion_casa_pers_'.$i],
@@ -95,8 +96,10 @@ class CodeudorController extends AppBaseController
                     'personas_id' => null,
                     'codeudores_id' => $codeudor->id
                 ));
+                $i++;
             }
-            for($i = 1; $i < 3; $i++){
+            $i = 1;
+            while(isset($input['nombres_fam_'.$i])){
                 $this->referenciaRepository->create(array(
                     'nombres' => $input['nombres_fam_'.$i],
                     'direccion_casa' => $input['direccion_casa_fam_'.$i],
@@ -108,6 +111,7 @@ class CodeudorController extends AppBaseController
                     'personas_id' => null,
                     'codeudores_id' => $codeudor->id
                 ));
+                $i++;
             }
         }
 

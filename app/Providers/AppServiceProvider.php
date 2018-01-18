@@ -11,6 +11,7 @@ use App\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,8 +38,8 @@ class AppServiceProvider extends ServiceProvider
                 "Abuel@" => "Abuel@",
                 "Ti@" => "Ti@",
             ];
-
-            $personas = Persona::where('user_id',Auth::id())
+            $personas = Persona::select(DB::raw("CONCAT(cedula,' ',nombres) AS cedula"),'id')
+                ->where('user_id',Auth::id())
                 ->pluck('cedula', 'id');
             View::share('parentesco', $parentesco);
             View::share('personas', $personas);

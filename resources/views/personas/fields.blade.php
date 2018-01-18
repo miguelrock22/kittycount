@@ -76,12 +76,12 @@
     <div class="row ref-pers hidden">
         <div class="form-group">
             <h4 class="countref"></h4>
-            <a class="btn btn-danger text-right" onclick="$(this).parent().parent().remove()"><i class="fa fa-times"></i></a>
+            <a class="btn btn-danger pull-right" onclick="$(this).parent().parent().remove()"><i class="fa fa-times"></i></a>
         </div>
         <!-- Nombres Field -->
         <div class="form-group col-sm-4">
         <sup>*</sup> {!! Form::label('nombres_pers', 'Nombres:') !!}
-            {!! Form::text('nombres_pers', null, ['class' => 'form-control', 'required' => true]) !!}
+            {!! Form::text('nombres_pers', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Dirección Field -->
@@ -115,7 +115,7 @@
         </div>
 
         <!-- Parentesco Field -->
-        {!! Form::hidden('parentesco_pers', "Amig@", ['class' => 'form-control']) !!}
+        {!! Form::hidden('parentesco_pers', "Amig@", ['class' => 'form-control', 'id' => 'parentesco_pers']) !!}
     </div>
 </div>
 <div class="col-md-12">
@@ -126,48 +126,48 @@
     <div class="row hidden ref-fam">
         <div class="form-group">
             <h4 class="countref"></h4>
-            <a class="btn btn-danger text-right" onclick="$(this).parent().parent().remove()"><i class="fa fa-times"></i></a>
+            <a class="btn btn-danger pull-right" onclick="$(this).parent().parent().remove()"><i class="fa fa-times"></i></a>
         </div>
         <!-- Nombres Field -->
         <div class="form-group col-sm-4">
-        <sup>*</sup> {!! Form::label('nombres_fam_2', 'Nombres:') !!}
-            {!! Form::text('nombres_fam_2', null, ['class' => 'form-control', 'required' => true]) !!}
+        <sup>*</sup> {!! Form::label('nombres_fam', 'Nombres:') !!}
+            {!! Form::text('nombres_fam', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Dirección Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('direccion_casa_fam_2', 'Dirección:') !!}
-            {!! Form::text('direccion_casa_fam_2', null, ['class' => 'form-control']) !!}
+            {!! Form::label('direccion_casa_fam', 'Dirección:') !!}
+            {!! Form::text('direccion_casa_fam', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Dirección trabajo Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('direccion_trabajo_fam_2', 'Dirección trabajo:') !!}
-            {!! Form::text('direccion_trabajo_fam_2', null, ['class' => 'form-control']) !!}
+            {!! Form::label('direccion_trabajo_fam', 'Dirección trabajo:') !!}
+            {!! Form::text('direccion_trabajo_fam', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('telefono_fam_2', 'Teléfono:') !!}
-            {!! Form::text('telefono_fam_2', null, ['class' => 'form-control']) !!}
+            {!! Form::label('telefono_fam', 'Teléfono:') !!}
+            {!! Form::text('telefono_fam', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('telefono_trabajo_fam_2', 'Teléfono trabajo:') !!}
-            {!! Form::text('telefono_trabajo_fam_2', null, ['class' => 'form-control']) !!}
+            {!! Form::label('telefono_trabajo_fam', 'Teléfono trabajo:') !!}
+            {!! Form::text('telefono_trabajo_fam', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Telefonos Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('celular_fam_2', 'Celular:') !!}
-            {!! Form::text('celular_fam_2', null, ['class' => 'form-control']) !!}
+            {!! Form::label('celular_fam', 'Celular:') !!}
+            {!! Form::text('celular_fam', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Parentesco Field -->
         <div class="form-group col-sm-4">
-            {!! Form::label('parentesco_fam_2', 'Parentesco:') !!}
-            {!! Form::select('parentesco_fam_2', $parentesco, null, ['class' => 'form-control']) !!}
+            {!! Form::label('parentesco_fam', 'Parentesco:') !!}
+            {!! Form::select('parentesco_fam', $parentesco, null, ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>
@@ -185,21 +185,27 @@
     $('document').ready(function(){
         $('.add-ref-pers').click(function(){
             var row = $(".ref-pers").clone();
-            row.removeClass('hidden ref-pers').addClass('cloned');
-            row.find('.countref').text(($('.cloned').length + 1));
-            row.find('input').each(function(e, i){
+            var count = $('.cloned_pers').length;
+            row.removeClass('hidden ref-pers').addClass('cloned_pers');
+            row.find('.countref').text((count + 1));
+            row.find('#nombres_pers').attr('required',true);
+            row.find('input').each(function(co, i){
                 var name = $(i).attr('id');
-                $(i).attr('id',name+"_"+(e+1)).attr('name',name+"_"+(e+1));
+                $(i).attr('id',name+"_"+(count+1)).attr('name',name+"_"+(count+1));
             });
             $('.personales').append(row);
         });
         $('.add-ref-fam').click(function(){
             var row = $(".ref-fam").clone();
-            row.removeClass('hidden ref-fam').addClass('cloned');
-            row.find('.countref').text(($('.cloned').length + 1));
-            row.find('input').each(function(e, i){
+            var count = $('.cloned_fam').length;
+            row.removeClass('hidden ref-fam').addClass('cloned_fam');
+            row.find('.countref').text((count + 1));
+            row.find('#nombres_fam').attr('required',true);
+            var nSelect = row.find('select').attr('id');
+            row.find('select').attr('id',nSelect+"_"+(count+1)).attr('name',nSelect+"_"+(count+1));
+            row.find('input').each(function(co, i){
                 var name = $(i).attr('id');
-                $(i).attr('id',name+"_"+(e+1)).attr('name',name+"_"+(e+1));
+                $(i).attr('id',name+"_"+(count+1)).attr('name',name+"_"+(count+1));
             });
             $('.familiares').append(row);
         });

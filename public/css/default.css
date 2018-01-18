@@ -23,3 +23,16 @@ textarea{resize: none;}
 	.box{
 	    background:rgba(248,248,248,0.8);
 	}
+
+/*CUSTOM CSS by zADMIN*/
+.form-group{
+	min-height: 33px;
+}
+.form-group .btn.btn-danger{
+	margin-right:20px;
+}
+.countref{
+	margin-left: 10px;
+    font-size: 24px;
+    float: left;
+}
