@@ -66,23 +66,23 @@
 
             </div>
             <div class="row">
-                <div class="col-xs-8">
+                {{--<div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
                             <input type="checkbox" name="remember"> Recuerdame
                         </label>
                     </div>
-                </div>
+                </div>--}}
                 <!-- /.col -->
-                <div class="col-xs-4">
+                <div class="col-xs-6">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar Sesión</button>
                 </div>
                 <!-- /.col -->
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">Olvide mi contraseña</a><br>
-        <a href="{{ url('/register') }}" class="text-center">Registrarse</a>
+        {{--<a href="{{ url('/password/reset') }}">Olvide mi contraseña</a><br>
+        <a href="{{ url('/register') }}" class="text-center">Registrarse</a>--}}
 
     </div>
     <!-- /.login-box-body -->

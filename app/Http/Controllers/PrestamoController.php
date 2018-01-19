@@ -8,6 +8,7 @@ use App\Repositories\PrestamoRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Prestamo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Flash, DataTables;
 use Carbon\Carbon;
@@ -38,9 +39,10 @@ class PrestamoController extends AppBaseController
 
     public function datatable(Request $request) {
         $u_id = Auth::id();
-        $prestamos = Prestamo::with(['user','persona' => function($query) use ($u_id){
-            $query->where('user_id', $u_id);
-        }])
+        $prestamos = Prestamo::with(['user','persona'])->whereHas('persona',function($query) use ($u_id){
+            //dd($query);
+            $query->whereUserId($u_id);
+        })
         ->where('estado',1)->get();
         $prestamos->each(function($prestamo) {
             $prestamo->action = route("prestamos.destroy", [$prestamo->id]);
