@@ -53,7 +53,10 @@ class AppServiceProvider extends ServiceProvider
             $codeudor = Codeudor::where('user_id',Auth::id())->pluck('cedula', 'id');
             View::share('codeudor', $codeudor);
         });
-
+        View::composer(['usuarios.create','usuarios.edit'],function($view){
+            $roles = $roles = \Spatie\Permission\Models\Role::pluck('name','id');
+            View::share('roles',$roles);
+        });
     }
 
     /**

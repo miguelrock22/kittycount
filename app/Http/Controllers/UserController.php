@@ -47,11 +47,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        /*User::create([
+        $data = $request->all();
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);*/
+        ]);
+
+        if($data['rol_id'] == 1)
+            $user->assignRole('Administrador');
+        elseif($data['rol_id'] == 2)
+            $user->assignRole('Cobrador');
+
+        Flash::success('User saved successfully.');
+
+        return redirect(route('usuarios.index'));
     }
 
     /**
@@ -81,13 +92,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::with('roles')->find($id);
 
         if (empty($user)) {
             Flash::error('User not found');
 
             return redirect(route('usuarios.index'));
         }
+        $user->rol_id = $user->roles;
 
         return view('usuarios.edit')->with('user', $user);
     }
@@ -101,7 +113,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $user = User::find($id);
+
+        if (empty($user)) {
+            Flash::error('Persona not found');
+
+            return redirect(route('usuarios.index'));
+        }
+
+        $user->name = $data['name'];
+        $user->email = $data['password'];
+        $user->removeRole($user->getRoleNames()[0]);
+        if($data['rol_id'] == 1)
+            $user->assignRole('Administrador');
+        elseif($data['rol_id'] == 2)
+            $user->assignRole('Cobrador');
+        
+        Flash::success('Usuario editado correctamente');
+
+        return view('usuarios.index')->with('user', $user);
     }
 
     /**
