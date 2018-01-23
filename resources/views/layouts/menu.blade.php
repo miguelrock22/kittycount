@@ -19,7 +19,11 @@
 </li>
 
 <li class="{{ Request::is('admin/informes*') ? 'active' : '' }}">
-    <a href="{!! route('informes.index') !!}"><i class="fa fa-line-chart" aria-hidden="true"></i><span>Informes</span></a>
+    <a href="{!! route('informes.index') !!}"><i class="fa fa-line-chart" aria-hidden="true"></i><span>Informe general</span></a>
+</li>
+
+<li class="{{ Request::is('admin/mensual*') ? 'active' : '' }}">
+    <a href="{!! route('mensual.index') !!}"><i class="fa fa-line-chart" aria-hidden="true"></i><span>Informe mensual</span></a>
 </li>
 
 <li class="{{ Request::is('admin/user*') ? 'active' : '' }}">
