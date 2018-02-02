@@ -139,6 +139,17 @@ class PersonaController extends AppBaseController
             return redirect(route('personas.index'));
         }
 
+        $fileCC = $persona->url_cedula;
+        $fileCC = explode('.',$fileCC);
+        $fileCC = end($fileCC);
+        $persona->typeCC = $fileCC;
+
+        $fileCL = $persona->url_carta_laboral;
+        $fileCL = explode('.',$fileCL);
+        $fileCL = end($fileCL);
+        $persona->typeCL = $fileCL;
+
+
         return view('personas.show')->with('persona', $persona);
     }
 

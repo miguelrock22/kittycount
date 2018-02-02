@@ -62,14 +62,32 @@
     <!-- Url Cedula Field -->
     <div class="col-md-4">
         {!! Form::label('url_cedula', 'Cédula:') !!}
-        <img src="{{ url('/') }}/{!! $persona->url_cedula !!}" class="img-responsive" />
+    @switch($persona->typeCC)
+        @case('jpeg')
+        @case('jpg')
+        @case('png')
+        @case('bmp')
+            <img style="max-width:50%" src="{{ url('/') }}/{!! $persona->url_cedula !!}" class="img-responsive" />
+            @break
+    @endswitch
+        <a href="{{ url('/') }}/{!! $persona->url_cedula !!}" download>Descargar</a>
     </div>
-
+                
+    
     <!-- Url Carta Laboral Field -->
     <div class="col-md-4">
         {!! Form::label('url_carta_laboral', 'Carta Laboral:') !!}
-        <img src="{{ url('/') }}/{!! $persona->url_carta_laboral !!}" class="img-responsive" />
+    @switch($persona->typeCL)
+        @case('jpeg')
+        @case('jpg')
+        @case('png')
+        @case('bmp')
+        <img style="max-width:50%" src="{{ url('/') }}/{!! $persona->url_carta_laboral !!}" class="img-responsive" />
+        @break
+    @endswitch
+    <a href="{{ url('/') }}/{!! $persona->url_carta_laboral !!}" download>Descargar</a>
     </div>
+    
 
     <!-- Created At Field -->
     <div class="col-md-4">
