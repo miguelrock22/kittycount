@@ -6,6 +6,7 @@ use Response;
 use Illuminate\Http\Request;
 use Flash, DataTables;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -117,18 +118,24 @@ class UserController extends Controller
         $user = User::find($id);
 
         if (empty($user)) {
-            Flash::error('Persona not found');
+            Flash::error('Hubo un error guardando el usuario');
 
             return redirect(route('usuarios.index'));
         }
 
         $user->name = $data['name'];
-        $user->email = $data['password'];
+        $user->email = $data['email'];
+
+        if(isset($data['change_pass'])){
+            $user->password = $data['con_password'];
+        }
         $user->removeRole($user->getRoleNames()[0]);
         if($data['rol_id'] == 1)
             $user->assignRole('Administrador');
         elseif($data['rol_id'] == 2)
             $user->assignRole('Cobrador');
+        
+        $user->save();
         
         Flash::success('Usuario editado correctamente');
 

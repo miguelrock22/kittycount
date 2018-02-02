@@ -57,3 +57,15 @@
     {!! Form::label('created_at', 'Día de registro') !!}
     <p>{!! $codeudor->created_at !!}</p>
 </div>
+
+<!-- Url Cedula Field -->
+<div class="col-md-4">
+    {!! Form::label('url_cedula', 'Cédula:') !!}
+    <img src="{{ url('/') }}/{!! $persona->url_cedula !!}" class="img-responsive" />
+</div>
+
+<!-- Url Carta Laboral Field -->
+<div class="col-md-4">
+    {!! Form::label('url_carta_laboral', 'Carta Laboral:') !!}
+    <img src="{{ url('/') }}/{!! $persona->url_carta_laboral !!}" class="img-responsive" />
+</div>

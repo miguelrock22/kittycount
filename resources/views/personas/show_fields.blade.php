@@ -62,13 +62,13 @@
     <!-- Url Cedula Field -->
     <div class="col-md-4">
         {!! Form::label('url_cedula', 'Cédula:') !!}
-        <p>{!! $persona->url_cedula !!}</p>
+        <img src="{{ url('/') }}/{!! $persona->url_cedula !!}" class="img-responsive" />
     </div>
 
     <!-- Url Carta Laboral Field -->
     <div class="col-md-4">
         {!! Form::label('url_carta_laboral', 'Carta Laboral:') !!}
-        <p>{!! $persona->url_carta_laboral !!}</p>
+        <img src="{{ url('/') }}/{!! $persona->url_carta_laboral !!}" class="img-responsive" />
     </div>
 
     <!-- Created At Field -->

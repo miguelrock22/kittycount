@@ -37,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
                 "Prim@" => "Prim@",
                 "Abuel@" => "Abuel@",
                 "Ti@" => "Ti@",
+                "Hij@" => "Hij@",
+                "Cuñad@" => "Cuñad@",
             ];
             $personas = Persona::select(DB::raw("CONCAT(cedula,' ',nombres) AS cedula"),'id')
                 ->where('user_id',Auth::id())
