@@ -137,6 +137,16 @@ class CodeudorController extends AppBaseController
             return redirect(route('codeudores.index'));
         }
 
+        $fileCC = $codeudor->url_cedula;
+        $fileCC = explode('.',$fileCC);
+        $fileCC = end($fileCC);
+        $codeudor->typeCC = $fileCC;
+
+        $fileCL = $codeudor->url_carta_laboral;
+        $fileCL = explode('.',$fileCL);
+        $fileCL = end($fileCL);
+        $codeudor->typeCL = $fileCL;
+
         return view('codeudores.show')->with('codeudor', $codeudor);
     }
 

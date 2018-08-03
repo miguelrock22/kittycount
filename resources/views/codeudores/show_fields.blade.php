@@ -59,13 +59,32 @@
 </div>
 
 <!-- Url Cedula Field -->
-<div class="col-md-4">
-    {!! Form::label('url_cedula', 'Cédula:') !!}
-    <img src="{{ url('/') }}/{!! $persona->url_cedula !!}" class="img-responsive" />
+@if(!empty($codeudor->url_cedula))
+    <div class="col-md-4">
+        {!! Form::label('url_cedula', 'Cédula:') !!}
+    @switch($codeudor->typeCC)
+        @case('jpeg')
+        @case('jpg')
+        @case('png')
+        @case('bmp')
+            <img style="max-width:50%" src="{{ url('/') }}/{!! $codeudor->url_cedula !!}" class="img-responsive" />
+            @break
+    @endswitch
+        <a href="{{ url('/') }}/{!! $codeudor->url_cedula !!}" download>Descargar</a>
+    </div>
+@endif
+@if(!empty($codeudor->url_carta_laboral))
+    <!-- Url Carta Laboral Field -->
+    <div class="col-md-4">
+        {!! Form::label('url_carta_laboral', 'Carta Laboral:') !!}
+    @switch($codeudor->typeCL)
+        @case('jpeg')
+        @case('jpg')
+        @case('png')
+        @case('bmp')
+        <img style="max-width:50%" src="{{ url('/') }}/{!! $codeudor->url_carta_laboral !!}" class="img-responsive" />
+        @break
+    @endswitch
+    <a href="{{ url('/') }}/{!! $codeudor->url_carta_laboral !!}" download>Descargar</a>
 </div>
-
-<!-- Url Carta Laboral Field -->
-<div class="col-md-4">
-    {!! Form::label('url_carta_laboral', 'Carta Laboral:') !!}
-    <img src="{{ url('/') }}/{!! $persona->url_carta_laboral !!}" class="img-responsive" />
-</div>
+@endif

@@ -58,7 +58,7 @@
         {!! Form::label('celular', 'Celular:') !!}
         <p>{!! $persona->celular !!}</p>
     </div>
-
+    @if(!empty($persona->url_cedula))
     <!-- Url Cedula Field -->
     <div class="col-md-4">
         {!! Form::label('url_cedula', 'Cédula:') !!}
@@ -72,8 +72,9 @@
     @endswitch
         <a href="{{ url('/') }}/{!! $persona->url_cedula !!}" download>Descargar</a>
     </div>
+    @endif
                 
-    
+    @if(!empty($persona->url_carta_laboral))
     <!-- Url Carta Laboral Field -->
     <div class="col-md-4">
         {!! Form::label('url_carta_laboral', 'Carta Laboral:') !!}
@@ -87,6 +88,7 @@
     @endswitch
     <a href="{{ url('/') }}/{!! $persona->url_carta_laboral !!}" download>Descargar</a>
     </div>
+     @endif
     
 
     <!-- Created At Field -->
