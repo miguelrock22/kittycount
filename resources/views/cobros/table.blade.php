@@ -3,7 +3,6 @@
     <tr>
     <th>Cliente</th>
     <th>Dirección</th>
-    <th>Prestamista</th>
     <th>Valor Cuota</th>
     <th>Dia Cobro</th>
         <th colspan="3">Acción</th>
@@ -14,7 +13,6 @@
     <tr>
         <td>{!! $prestamo->persona->nombres !!}</td>
         <td>{!! $prestamo->persona->direccion_casa !!}</td>
-        <td>{!! $prestamo->persona->user->name !!}</td>
         @if((strtotime($prestamo->dia_cobro) >= strtotime("-2 days")) && (strtotime($prestamo->dia_cobro) <= strtotime("+1 days")))
             <td>${!! number_format($prestamo->valor_cuota) !!}</td>
             <td>{!! date('d-m-Y', strtotime($prestamo->dia_cobro)) !!}</td>
@@ -37,6 +35,7 @@
 <td>--</td>
 <td>--</td>
 <td>--</td>
+</tr>
 @foreach($abonos as $abono)
     <tr>
         <td>{!! $abono->persona->nombres !!}</td>
@@ -53,6 +52,24 @@
         </td>
     </tr>
 @endforeach
+<tr>
+<td>Cobros realizados</td>
+<td>--</td>
+<td>--</td>
+<td>--</td>
+<td>--</td>
 </tr>
+@foreach($historial as $h)
+    <tr class="success">
+        <td>{!! $h->persona->nombres !!}</td>
+        <td>{!! $h->persona->direccion_casa !!}</td>
+        <td>${!! number_format($h->total_cobrado) !!}</td>
+        <td></td>
+        <td></td>
+        <td>
+            ---
+        </td>
+    </tr>
+@endforeach
 </tbody>
 </table>

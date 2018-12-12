@@ -43,8 +43,9 @@ class CobrosController extends Controller
             })->get();
         $abonos = Historial::where('abono',1)
             ->whereBetween('dia_cobro_abono',$dateBewtween)->get();
+        $historial = Historial::where('users_id',Auth::id())->whereDate('created_at',Carbon::now()->format('Y-m-d'))->get();
         return view('cobros.index')
-            ->with(['prestamos'=> $prestamos,'abonos'=>$abonos]);
+            ->with(['prestamos'=> $prestamos,'abonos'=>$abonos,'historial'=> $historial]);
     }
 
     /**
